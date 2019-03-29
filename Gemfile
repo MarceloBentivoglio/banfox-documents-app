@@ -16,7 +16,14 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+# Used to create authorizations
 gem 'pundit'
+
+# Used to create the pdf from html
+gem "pdfkit"
+# User to open the pdf anywhere not only on the controller
+gem "render_anywhere", require: false
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -29,4 +36,9 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+end
+
+group :production do
+# Used to create the pdf from html on production
+  gem "wkhtmltopdf-heroku"
 end

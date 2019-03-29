@@ -4,8 +4,8 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    @document = Document.find(params[:id])
-    authorize @document
-    @document = JSON.parse(@document.metadata, symbolize_names: true)
+    document = Document.find(params[:id])
+    authorize document
+    @document = document.individual_content
   end
 end

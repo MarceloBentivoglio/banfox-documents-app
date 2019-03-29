@@ -1,0 +1,121 @@
+<div class="container">
+  <h1>ADITIVO AO CONTRATO DE FOMENTO COMERCIAL COM REGRESSO</h1>
+  <h2>Operação <%= document[:operation][:id] %> realizada em <%= document[:operation][:date] %></h2>
+
+  <h3>Contratante</h3>
+  <p class="no-margin-bottom"><%= document[:seller][:company_name] %></p>
+  <p class="no-margin-bottom"><%= document[:seller][:cnpj] %></p>
+  <p class="no-margin-bottom"><%= document[:seller][:address] %></p>
+  <p class="no-margin-bottom"><%= document[:seller][:city] %> (<%= document[:seller][:state]  %>)</p>
+  <p class="no-margin-bottom"><%= document[:seller][:zip_code] %></p>
+  <p><%= document[:seller][:email] %></p>
+
+  <h3>Contratada</h3>
+  <p class="no-margin-bottom">MVP Invest Fomento Mercantil Ltda.</p>
+  <p class="no-margin-bottom">23.198.636/0001-95</p>
+  <p class="no-margin-bottom">Avenida Angélica, 2529</p>
+  <p class="no-margin-bottom">São Paulo (SP)</p>
+  <p class="no-margin-bottom">01227-200</p>
+  <p>joao@banfox.com.br</p>
+
+  <h3>1. Cálculo da Operação</h3>
+  <p class="no-margin-bottom">(+) Total Bruto dos Créditos: <%= document[:operation][:gross_value] %></p>
+  <p class="no-margin-bottom">(-) Fator: <%= document[:operation][:fator] %></p>
+  <p class="no-margin-bottom">(-) Ad valorem: <%= document[:operation][:advalorem] %></p>
+  <p class="no-margin-bottom">(-) IOF: <%= document[:operation][:iof] %></p>
+  <p class="no-margin-bottom">(-) IOF Adicional: <%= document[:operation][:iof_adicional] %></p>
+  <p class="no-margin-bottom">(-) Tarifas: <%= document[:operation][:fee] %></p>
+  <p>(=) Valor líquido: <%= document[:operation][:net_value] %></p>
+
+  <h3>2. Relação dos Créditos negociados</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Sacado</th>
+        <th>CPF/CNPJ</th>
+        <th>Tipo</th>
+        <th>Nº NF-e</th>
+        <th>Nº Doc</th>
+        <th>Vencto</th>
+        <th>Dias</th>
+        <th>Valor</th>
+        <th>Fator+Ad</th>
+        <th>IOF</th>
+        <th>Líquido</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% document[:installments].each do |installment| %>
+        <tr>
+          <td><%= installment[:payer_company_name] %></td>
+          <td><%= installment[:registration] %></td>
+          <td><%= installment[:type] %></td>
+          <td><%= installment[:invoice_number] %></td>
+          <td><%= installment[:number] %></td>
+          <td><%= installment[:due_date] %></td>
+          <td><%= installment[:outstanding_days] %></td>
+          <td><%= installment[:value] %></td>
+          <td><%= installment[:fator_advalorem] %></td>
+          <td><%= installment[:iof] %></td>
+          <td><%= installment[:net_value] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+
+  <h3>3.</h3>
+  <p>Pelo presente termo aditivo ao Contrato Geral de Fomento Mercantil (“Termo” ou “Aditivo”), a Contratante e a Contratada (que, individualmente, poderão ser referidas como “Parte” e, em conjunto, como “Partes”) celebram a compra e a venda dos créditos aqui discriminados, pela importância neste Termo avençada, da qual concordam e se dizem plenamente satisfeitos e de acordo com a precificação negocial, respondendo a Contratante e o(s) “Devedor(es) Solidário(s)” (conforme página de assinaturas deste Termo) pela liquidação dos referidos créditos.</p>
+  <h3>4.</h3>
+  <p>A Contratante declara, sem qualquer induzimento, ser devedora da MVP - Fomento Mercantil Ltda. (Contratada) da dívida líquida, certa e exigível definida na cláusula primeira deste Termo no campo “Total Bruto dos Créditos”, a qual será paga conforme a(s) data(s) de vencimento do(s) título(s) indicado(s) neste Aditivo, salvo quando o vencimento recair em feriado ou final de semana, quando então se prorrogará para o primeiro dia útil subsequente. Em caso de atraso no pagamento do título superior a 2 (dois) dias úteis (“Inadimplência”), importará no vencimento integral e antecipado de todo o débito do título em questão, além do acréscimo de correção monetária (IGPM/FGV), juros moratórios à taxa de 1,00% (um por cento) ao mês e multa de 10,00% (dez por cento) sobre o total do título.</p>
+  <h3>5.</h3>
+  <p>O(s) Devedor(es) Solidário(s), conforme página de assinaturas deste Termo, assume(m) e garante(m) todas as obrigações assumidas pela Contratante nesta operação e assina(m) o presente Termo renunciando, expressa e irrevogavelmente, ao benefício de ordem estabelecido no Código Civil, reciprocamente constituindo cada qual como seu bastante procurador, através de mandato irrevogável e irretratável, outorgando-se, mútua e reciprocamente, os mais amplos, gerais e ilimitados poderes para qualquer deles, em nome de cada um dos devedores, receberem citação em ações que tenham por objeto o presente contrato.</p>
+  <h3>6.</h3>
+  <p>Fica convencionado entre as partes que na transmissão dos créditos negociados neste aditivo, a Contratante e o(s) Devedor(es) Solidário(s) respondem pela liquidação de referidos créditos e pela solvência dos devedores.</p>
+  <h3>7.</h3>
+  <p>Valores eventualmente retidos, em razão dos riscos envolvidos em cada operação, serão pagos imediatamente após a liquidação do título a que se refere na conta da Contratada. O valor será pago integralmente, sem correção. Em caso de atrasos, inadimplência, recompra, bem como demais situações extraordinárias, a Contratada poderá utilizar o valor retido, a seu exclusivo critério, para pagamento dos valores ligados à atualização dos títulos.</p>
+  <h3>8.</h3>
+  <p>A Contratante declara ter recebido o valor líquido constante neste termo, da qual dá a mais plena, rasa e geral quitação.</p>
+  <h3>9.</h3>
+  <p>A Contratante e as demais Partes aqui envolvidas afirmam e declaram que o presente Aditivo poderá ser assinado por meio eletrônico, sendo consideradas válidas as referidas assinaturas. A Partes também declaram reconhecerem como válidas as assinaturas eletrônicas feitas através da plataforma “ClickSign” (www.clicksign.com.br), nos termos do art. 10 parágrafo 2º da MP 2200-2/2001.</p>
+  <br>
+
+  <div class="text-center">
+  <span>São Paulo - São Paulo, <%= document[:operation][:date] %>.</span>
+  </div>
+  <br>
+
+  <h3>Assinaturas</h3>
+  <div class="signatures">
+    <div class="signature">
+      <strong><p>Contratada</p></strong>
+      <br>
+      <p class="no-margin-bottom signature-line">MVP Invest Fomento Mercantil Ltda.</p>
+      <p class="no-margin-bottom">23.198.636/0001-95</p>
+      <p class="no-margin-bottom">Avenida Angélica, 2529</p>
+      <p class="no-margin-bottom">São Paulo (SP)</p>
+      <p class="no-margin-bottom">01227-200</p>
+      <p>joao@banfox.com.br</p>
+      <br>
+    </div>
+    <div class="signature">
+      <strong><p>Contratante</p></strong>
+      <br>
+      <p class="no-margin-bottom signature-line"><%= document[:seller][:company_name] %></p>
+      <p class="no-margin-bottom"><%= document[:seller][:cnpj] %></p>
+      <p class="no-margin-bottom"><%= document[:seller][:address] %></p>
+      <p class="no-margin-bottom"><%= document[:seller][:city] %> (<%= document[:seller][:state]  %>)</p>
+      <p class="no-margin-bottom"><%= document[:seller][:zip_code] %></p>
+      <p><%= document[:seller][:email] %></p>
+      <br>
+    </div>
+    <div class="signature">
+      <strong><p>Devedor Solidário</p></strong>
+      <br>
+      <p class="no-margin-bottom signature-line"><%= document[:joint_debtor][:name] %></p>
+      <p class="no-margin-bottom"><%= document[:joint_debtor][:cpf] %></p>
+      <p class="no-margin-bottom"><%= document[:joint_debtor][:email] %></p>
+    </div>
+  </div>
+</div>
+
