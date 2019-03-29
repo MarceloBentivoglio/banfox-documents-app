@@ -3,6 +3,10 @@ class DocumentPolicy < ApplicationPolicy
     return true
   end
 
+  def download?
+    return true
+  end
+
   class Scope < Scope
     def resolve
       scope.all

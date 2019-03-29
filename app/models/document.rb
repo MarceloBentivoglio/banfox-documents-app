@@ -3,12 +3,12 @@ class Document < ApplicationRecord
 
   def to_pdf
     kit = PDFKit.new(as_html)
-    kit.to_file("tmp/operation.pdf")
+    kit.to_file("tmp/#{filename}")
   end
 
-  # def filename
-  #   "Operation.pdf"
-  # end
+  def filename
+    "operacao-#{individual_content[:operation][:id]}.pdf"
+  end
 
   def render_attributes
     {

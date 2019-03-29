@@ -1,14 +1,19 @@
+<%= link_to "Download PDF",
+  download_document_path(@document, format: "pdf"),
+
+  class: "btn btn-primary" %>
+
 <div class="container">
   <h1>ADITIVO AO CONTRATO DE FOMENTO COMERCIAL COM REGRESSO</h1>
-  <h2>Operação <%= @document[:operation][:id] %> realizada em <%= @document[:operation][:date] %></h2>
+  <h2>Operação <%= @content[:operation][:id] %> realizada em <%= @content[:operation][:date] %></h2>
 
   <h3>Contratante</h3>
-  <p class="no-margin-bottom"><%= @document[:seller][:company_name] %></p>
-  <p class="no-margin-bottom"><%= @document[:seller][:cnpj] %></p>
-  <p class="no-margin-bottom"><%= @document[:seller][:address] %></p>
-  <p class="no-margin-bottom"><%= @document[:seller][:city] %> (<%= @document[:seller][:state]  %>)</p>
-  <p class="no-margin-bottom"><%= @document[:seller][:zip_code] %></p>
-  <p><%= @document[:seller][:email] %></p>
+  <p class="no-margin-bottom"><%= @content[:seller][:company_name] %></p>
+  <p class="no-margin-bottom"><%= @content[:seller][:cnpj] %></p>
+  <p class="no-margin-bottom"><%= @content[:seller][:address] %></p>
+  <p class="no-margin-bottom"><%= @content[:seller][:city] %> (<%= @content[:seller][:state]  %>)</p>
+  <p class="no-margin-bottom"><%= @content[:seller][:zip_code] %></p>
+  <p><%= @content[:seller][:email] %></p>
 
   <h3>Contratada</h3>
   <p class="no-margin-bottom">MVP Invest Fomento Mercantil Ltda.</p>
@@ -19,13 +24,13 @@
   <p>joao@banfox.com.br</p>
 
   <h3>1. Cálculo da Operação</h3>
-  <p class="no-margin-bottom">(+) Total Bruto dos Créditos: <%= @document[:operation][:gross_value] %></p>
-  <p class="no-margin-bottom">(-) Fator: <%= @document[:operation][:fator] %></p>
-  <p class="no-margin-bottom">(-) Ad valorem: <%= @document[:operation][:advalorem] %></p>
-  <p class="no-margin-bottom">(-) IOF: <%= @document[:operation][:iof] %></p>
-  <p class="no-margin-bottom">(-) IOF Adicional: <%= @document[:operation][:iof_adicional] %></p>
-  <p class="no-margin-bottom">(-) Tarifas: <%= @document[:operation][:fee] %></p>
-  <p>(=) Valor líquido: <%= @document[:operation][:net_value] %></p>
+  <p class="no-margin-bottom">(+) Total Bruto dos Créditos: <%= @content[:operation][:gross_value] %></p>
+  <p class="no-margin-bottom">(-) Fator: <%= @content[:operation][:fator] %></p>
+  <p class="no-margin-bottom">(-) Ad valorem: <%= @content[:operation][:advalorem] %></p>
+  <p class="no-margin-bottom">(-) IOF: <%= @content[:operation][:iof] %></p>
+  <p class="no-margin-bottom">(-) IOF Adicional: <%= @content[:operation][:iof_adicional] %></p>
+  <p class="no-margin-bottom">(-) Tarifas: <%= @content[:operation][:fee] %></p>
+  <p>(=) Valor líquido: <%= @content[:operation][:net_value] %></p>
 
   <h3>2. Relação dos Créditos negociados</h3>
   <table>
@@ -45,7 +50,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @document[:installments].each do |installment| %>
+      <% @content[:installments].each do |installment| %>
         <tr>
           <td><%= installment[:payer_company_name] %></td>
           <td><%= installment[:registration] %></td>
@@ -81,7 +86,7 @@
   <br>
 
   <div class="text-center">
-  <span>São Paulo - São Paulo, <%= @document[:operation][:date] %>.</span>
+  <span>São Paulo - São Paulo, <%= @content[:operation][:date] %>.</span>
   </div>
   <br>
 
@@ -101,20 +106,20 @@
     <div class="signature">
       <strong><p>Contratante</p></strong>
       <br>
-      <p class="no-margin-bottom signature-line"><%= @document[:seller][:company_name] %></p>
-      <p class="no-margin-bottom"><%= @document[:seller][:cnpj] %></p>
-      <p class="no-margin-bottom"><%= @document[:seller][:address] %></p>
-      <p class="no-margin-bottom"><%= @document[:seller][:city] %> (<%= @document[:seller][:state]  %>)</p>
-      <p class="no-margin-bottom"><%= @document[:seller][:zip_code] %></p>
-      <p><%= @document[:seller][:email] %></p>
+      <p class="no-margin-bottom signature-line"><%= @content[:seller][:company_name] %></p>
+      <p class="no-margin-bottom"><%= @content[:seller][:cnpj] %></p>
+      <p class="no-margin-bottom"><%= @content[:seller][:address] %></p>
+      <p class="no-margin-bottom"><%= @content[:seller][:city] %> (<%= @content[:seller][:state]  %>)</p>
+      <p class="no-margin-bottom"><%= @content[:seller][:zip_code] %></p>
+      <p><%= @content[:seller][:email] %></p>
       <br>
     </div>
     <div class="signature">
       <strong><p>Devedor Solidário</p></strong>
       <br>
-      <p class="no-margin-bottom signature-line"><%= @document[:joint_debtor][:name] %></p>
-      <p class="no-margin-bottom"><%= @document[:joint_debtor][:cpf] %></p>
-      <p class="no-margin-bottom"><%= @document[:joint_debtor][:email] %></p>
+      <p class="no-margin-bottom signature-line"><%= @content[:joint_debtor][:name] %></p>
+      <p class="no-margin-bottom"><%= @content[:joint_debtor][:cpf] %></p>
+      <p class="no-margin-bottom"><%= @content[:joint_debtor][:email] %></p>
     </div>
   </div>
 </div>
