@@ -21,9 +21,6 @@ gem 'pundit'
 
 # Used to create the pdf from html
 gem "pdfkit"
-# User to open the pdf anywhere not only on the controller
-gem "render_anywhere", require: false
-
 
 group :development do
   gem 'web-console', '>= 3.3.0'

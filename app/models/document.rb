@@ -22,16 +22,9 @@ class Document < ApplicationRecord
     JSON.parse(metadata, symbolize_names: true)
   end
 
-  # private
+  private
 
   def as_html
-    # render render_attributes
     ApplicationController.render(render_attributes)
-
-    # render partial: "#{self.to_partial_path}", object: self, layout: 'pdf'
-    # DocumentsController.render :show
-    # ApplicationController.render :template "documents/show", :document => id
-    # DocumentsController.render :show, assigns: { document: individual_content }
-    # ApplicationController.render 'documents/show', assigns: { document: individual_content }
   end
 end
