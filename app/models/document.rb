@@ -19,7 +19,11 @@ class Document < ApplicationRecord
   end
 
   def individual_content
-    JSON.parse(metadata, symbolize_names: true)
+    variable_content.deep_symbolize_keys
+  end
+
+  def to_base_64_file
+    Base64.encode64(to_pdf.read)
   end
 
   private

@@ -22,6 +22,9 @@ gem 'pundit'
 # Used to create the pdf from html
 gem "pdfkit"
 
+# Used to create tokens for our API
+gem 'simple_token_authentication'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

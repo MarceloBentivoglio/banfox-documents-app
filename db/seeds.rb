@@ -8,7 +8,7 @@ ActiveRecord::Base.transaction do
     admin: true,
   )
 
-  metadata1 = {
+  variable_content1 = {
     seller: {
       company_name: "BIORT COMÉRCIO DE PROD. MÉDICOS E CIRÚRGICOS LTDA.",
       cnpj: "08.588.244/0001-49",
@@ -75,11 +75,11 @@ ActiveRecord::Base.transaction do
       cpf: "301.899.938-04",
       email: "rodrigo@biortimplantes.com.br",
     }
-  }.to_json
+  }
 
   document1 = Document.create!(
     user: user1,
-    metadata: metadata1,
+    variable_content: variable_content1,
   )
 end
 
