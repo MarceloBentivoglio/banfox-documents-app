@@ -22,13 +22,18 @@ class Document < ApplicationRecord
     variable_content.deep_symbolize_keys
   end
 
-  def to_base_64_file
-    Base64.encode64(to_pdf.read)
+  def send_to_signing_platform
+
   end
+
 
   private
 
   def as_html
     ApplicationController.render(render_attributes)
+  end
+
+  def to_base_64_file
+    Base64.encode64(to_pdf.read)
   end
 end

@@ -6,6 +6,7 @@ class Api::V1::DocumentsController < Api::V1::BaseController
     @document.user = current_user
     authorize [:api, :v1, @document]
     if @document.save
+      # @document.send_to_signing_platform
       head :no_content
     else
       render_error
