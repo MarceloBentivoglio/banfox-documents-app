@@ -1,6 +1,6 @@
 <div class="container">
   <h1>ADITIVO AO CONTRATO DE FOMENTO COMERCIAL COM REGRESSO</h1>
-  <h2>Operação <%= document[:operation][:id] %> realizada em <%= document[:operation][:date] %></h2>
+  <h2>Operação <%= document[:operation][:id] %> realizada em <%= Time.parse(document[:operation][:time]).strftime("%d/%m/%Y") %></h2>
 
   <h3>Contratante</h3>
   <p class="no-margin-bottom"><%= document[:seller][:company_name] %></p>
@@ -81,7 +81,7 @@
   <br>
 
   <div class="text-center">
-  <span>São Paulo - São Paulo, <%= document[:operation][:date] %>.</span>
+  <span>São Paulo - São Paulo, <%= Time.parse(document[:operation][:time]).strftime("%d/%m/%Y") %>.</span>
   </div>
   <br>
 
@@ -109,13 +109,17 @@
       <p><%= document[:seller][:email] %></p>
       <br>
     </div>
-    <div class="signature">
-      <strong><p>Devedor Solidário</p></strong>
-      <br>
-      <p class="no-margin-bottom signature-line"><%= document[:joint_debtor][:name] %></p>
-      <p class="no-margin-bottom"><%= document[:joint_debtor][:cpf] %></p>
-      <p class="no-margin-bottom"><%= document[:joint_debtor][:email] %></p>
-    </div>
+    <% document[:signers].each do |signer| %>
+      <% if signer[:sign_as].include? "joint_debtor" %>
+        <div class="signature">
+          <strong><p>Devedor Solidário</p></strong>
+          <br>
+          <p class="no-margin-bottom signature-line"><%= signer[:name] %></p>
+          <p class="no-margin-bottom"><%= signer[:documentation] %></p>
+          <p class="no-margin-bottom"><%= signer[:email] %></p>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

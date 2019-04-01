@@ -20,7 +20,7 @@ ActiveRecord::Base.transaction do
     },
     operation: {
       id: "1",
-      date: "26/07/2018",
+      time: "2019-03-29T10:30:00-03:00",
       gross_value: "16.905,33",
       fator: "1.071,73",
       advalorem: "20,84",
@@ -70,11 +70,17 @@ ActiveRecord::Base.transaction do
         net_value: "5.615,53"
       }
     ],
-    joint_debtor: {
-      name: "RODRIGO PEREIRA DAS MERCÊS",
-      cpf: "301.899.938-04",
-      email: "rodrigo@biortimplantes.com.br",
-    }
+    signers: [
+      {
+        name: "Joaquim Primeiro Devedor",
+        birthdate: "1989-04-21",
+        mobile: "11998308090",
+        documentation: "096.701.336-45",
+        email: "joaquim.oliveira.nt@gmail.com",
+        sign_as: ["sign", "joint_debtor"]
+      }
+    ]
+
   }
 
   document1 = Document.create!(
