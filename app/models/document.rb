@@ -6,6 +6,10 @@ class Document < ApplicationRecord
     kit.to_file("tmp/#{filename}")
   end
 
+  def to_base_64
+    Base64.strict_encode64(to_pdf.read)
+  end
+
   def filename
     "#{file_date} Aditivo da Operação #{individual_content[:operation][:id]}.pdf"
   end
@@ -22,8 +26,9 @@ class Document < ApplicationRecord
     variable_content.deep_symbolize_keys
   end
 
-  def send_to_signing_platform
-    Clicksign::Service.new(self)
+  def send_to_signing_platform_and_get_key
+    clicksign_service = Clicksign::Service.new(self).run
+    return clicksign_service.request_signature_keys
   end
 
   def deadline
@@ -33,6 +38,7 @@ class Document < ApplicationRecord
   def signers
     individual_content[:signers]
   end
+
 
   private
 
@@ -44,7 +50,4 @@ class Document < ApplicationRecord
     ApplicationController.render(render_attributes)
   end
 
-  def to_base_64
-    Base64.encode64(to_pdf.read)
-  end
 end
