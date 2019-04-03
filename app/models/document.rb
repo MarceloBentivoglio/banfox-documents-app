@@ -26,8 +26,9 @@ class Document < ApplicationRecord
     variable_content.deep_symbolize_keys
   end
 
-  def send_to_signing_platform_and_get_key
-    clicksign_service = Clicksign::Service.new(self).run
+  def send_to_signing_platform_and_get_keys
+    clicksign_service = Clicksign::Service.new(self)
+    clicksign_service.run
     return clicksign_service.request_signature_keys
   end
 

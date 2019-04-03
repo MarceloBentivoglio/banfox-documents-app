@@ -6,11 +6,19 @@ class Api::V1::DocumentsController < Api::V1::BaseController
     @document.user = current_user
     authorize [:api, :v1, @document]
     if @document.save
-      @response = @document.send_to_signing_platform_and_get_key
+      @signature_keys = @document.send_to_signing_platform_and_get_keys
       render :show, status: :created
     else
       render_error
     end
+
+    # # Teste
+    # @document = Document.new()
+    # authorize [:api, :v1, @document]
+    # @response = [{:email=>"joaquim.oliveira.nt@gmail.com", :signature_key=>"53e7a076-d8bc-4d9f-9c69-ae4fb0058fec"}]
+    # render :show, status: :created
+    # rescue
+    #   render_error
   end
 
   # private
