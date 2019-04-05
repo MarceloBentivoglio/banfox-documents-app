@@ -29,7 +29,7 @@ class Document < ApplicationRecord
   def send_to_signing_platform_and_get_keys
     clicksign_service = Clicksign::Service.new(self)
     clicksign_service.run
-    return clicksign_service.request_signature_keys
+    return clicksign_service.keys
   end
 
   def deadline

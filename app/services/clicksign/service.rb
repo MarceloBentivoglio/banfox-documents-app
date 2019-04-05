@@ -18,6 +18,14 @@ module Clicksign
       add_signers_to_document
     end
 
+    def keys
+      {
+        document_key: @document_key,
+        request_signature_keys: @request_signature_keys,
+      }
+    end
+
+
     private
 
     def create_document

@@ -6,7 +6,7 @@ class Api::V1::DocumentsController < Api::V1::BaseController
     @document.user = current_user
     authorize [:api, :v1, @document]
     if @document.save
-      @signature_keys = @document.send_to_signing_platform_and_get_keys
+      @keys = @document.send_to_signing_platform_and_get_keys
       render :show, status: :created
     else
       render_error
