@@ -159,6 +159,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rollbar (2.19.3)
+      multi_json
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
@@ -233,6 +235,7 @@ DEPENDENCIES
   rails (= 5.2.2)
   redis
   rest-client
+  rollbar
   sassc-rails
   simple_form
   simple_token_authentication

@@ -28,6 +28,9 @@ gem 'simple_token_authentication'
 # Used to create simple http requests
 gem 'rest-client'
 
+# Used to track erros in production
+gem 'rollbar'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
