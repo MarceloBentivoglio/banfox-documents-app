@@ -3,7 +3,8 @@
   <head>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500" rel="stylesheet">
     <style>
-      <%= Rails.application.assets.find_asset('application.scss').to_s %>
+      /* This line is a fix por Rails.application.assets.find_asset('application.scss').to_s that doesn't work in production */
+      <%= (Rails.application.assets || ::Sprockets::Railtie.build_environment(Rails.application)).find_asset('application.scss').to_s %>
     </style>
   </head>
   <body>
