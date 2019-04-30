@@ -99,9 +99,9 @@ module Clicksign
       end
     end
 
-
+    #TODO: trocar após o teste
     def host
-      Rails.env.development? ? "https://sandbox.clicksign.com" : "https://app.clicksign.com"
+      Rails.env.development? ? "https://sandbox.clicksign.com" : "https://sandbox.clicksign.com"
     end
 
     # TODO this method doesn't work and I don't know why
@@ -117,6 +117,7 @@ module Clicksign
     #   "api\/v1\/lists"
     # end
 
+    #TODO: trocar credentials após o teste
     def request_params
       "?access_token=#{Rails.application.credentials[Rails.env.to_sym][:clicksign][:access_token]}"
     end
