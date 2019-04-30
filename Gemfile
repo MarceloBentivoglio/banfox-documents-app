@@ -49,5 +49,5 @@ end
 
 group :production do
 # Used to create the pdf from html on production
-  gem "wkhtmltopdf-heroku"
+  gem "wkhtmltopdf-heroku", git: "https://github.com/gregnavis/wkhtmltopdf-heroku"
 end
