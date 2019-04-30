@@ -31,6 +31,9 @@ gem 'rest-client'
 # Used to track erros in production
 gem 'rollbar'
 
+# Used to keep the documents generated on Amazon S3
+gem "aws-sdk-s3", require: false
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
