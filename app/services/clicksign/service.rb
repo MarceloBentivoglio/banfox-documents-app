@@ -101,7 +101,7 @@ module Clicksign
 
     #TODO: trocar após o teste
     def host
-      Rails.env.development? ? "https://sandbox.clicksign.com" : "https://sandbox.clicksign.com"
+      Rails.env.development? ? "https://sandbox.clicksign.com" : "https://app.clicksign.com"
     end
 
     # TODO this method doesn't work and I don't know why
