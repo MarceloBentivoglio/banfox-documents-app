@@ -42,10 +42,11 @@ module Clicksign
       serialized_response = RestClient.post(url, body, header)
       response = JSON.parse(serialized_response).deep_symbolize_keys
       @document_key = response[:document][:key]
-      puts @document_key
+      puts "*** Document key: #{@document_key}"
     end
 
     def create_signers
+      puts "*** Signatários a serem criados: #{@document.signers}"
       @document.signers.each do |signer|
         create_signer(signer)
       end
@@ -69,7 +70,7 @@ module Clicksign
       serialized_response = RestClient.post(url, body, header)
       response = JSON.parse(serialized_response).deep_symbolize_keys
       @signer_keys << { email: signer[:email], signer_key: response[:signer][:key] }
-      puts @signer_keys
+      puts "*** Signatário criado: #{@signer_keys}"
     end
 
     def add_signers_to_document
@@ -96,6 +97,7 @@ module Clicksign
       new_signature_key = { email: signer_email, signature_key: response[:list][:request_signature_key] }
       unless @request_signature_keys.any? {|signature_key| signature_key[:email] == new_signature_key[:email]}
         @request_signature_keys << new_signature_key
+        puts "*** Signatário adicionado ou documento: #{new_signature_key}"
       end
     end
 
