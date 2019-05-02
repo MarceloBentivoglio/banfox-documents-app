@@ -114,6 +114,7 @@
       <p><%= @content[:seller][:email] %></p>
       <br>
     </div>
+  </div>
     <% @content[:signers].each do |signer| %>
       <% if signer[:sign_as].include? "joint_debtor" %>
         <div class="signature">
@@ -125,6 +126,5 @@
         </div>
       <% end %>
     <% end %>
-  </div>
 </div>
 

@@ -109,6 +109,7 @@
       <p><%= document[:seller][:email] %></p>
       <br>
     </div>
+  </div>
     <% document[:signers].each do |signer| %>
       <% if signer[:sign_as].include? "joint_debtor" %>
         <div class="signature">
@@ -120,6 +121,5 @@
         </div>
       <% end %>
     <% end %>
-  </div>
 </div>
 

@@ -1,2 +1,23 @@
-<h1>Documents#index</h1>
-<p>Find me in app/views/documents/index.html.erb</p>
+<div class="container">
+  <h1>Documents Index</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Doc Id</th>
+        <th>Op Id</th>
+        <th>Seller</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @documents.each do |document| %>
+        <tr>
+          <td><%= document.id %></td>
+          <td><%= document.individual_content[:operation][:id] %></td>
+          <td><%= document.individual_content[:seller][:company_name] %></td>
+          <td><%= link_to "show", document_path(document) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
