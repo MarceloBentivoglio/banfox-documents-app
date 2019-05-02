@@ -3,10 +3,10 @@
   <h2>Operação <%= document[:operation][:id] %> realizada em <%= Time.parse(document[:operation][:time]).strftime("%d/%m/%Y") %></h2>
 
   <h3>Contratante</h3>
-  <p class="no-margin-bottom"><%= document[:seller][:company_name] %></p>
+  <p class="no-margin-bottom"><%= document[:seller][:company_name].mb_chars.titleize %></p>
   <p class="no-margin-bottom"><%= document[:seller][:cnpj] %></p>
-  <p class="no-margin-bottom"><%= document[:seller][:address] %></p>
-  <p class="no-margin-bottom"><%= document[:seller][:city] %> (<%= document[:seller][:state]  %>)</p>
+  <p class="no-margin-bottom"><%= document[:seller][:address].mb_chars.titleize %></p>
+  <p class="no-margin-bottom"><%= document[:seller][:city].mb_chars.titleize %> (<%= document[:seller][:state].mb_chars.upcase  %>)</p>
   <p class="no-margin-bottom"><%= document[:seller][:zip_code] %></p>
   <p><%= document[:seller][:email] %></p>
 
@@ -47,9 +47,9 @@
     <tbody>
       <% document[:installments].each do |installment| %>
         <tr>
-          <td><%= installment[:payer_company_name] %></td>
+          <td><%= installment[:payer_company_name].mb_chars.titleize %></td>
           <td><%= installment[:registration] %></td>
-          <td><%= installment[:type] %></td>
+          <td><%= installment[:type].mb_chars.upcase %></td>
           <td><%= installment[:invoice_number] %></td>
           <td><%= installment[:number] %></td>
           <td><%= installment[:due_date] %></td>
@@ -101,25 +101,42 @@
     <div class="signature">
       <strong><p>Contratante</p></strong>
       <br>
-      <p class="no-margin-bottom signature-line"><%= document[:seller][:company_name] %></p>
+      <p class="no-margin-bottom signature-line"><%= document[:seller][:company_name].mb_chars.titleize %></p>
       <p class="no-margin-bottom"><%= document[:seller][:cnpj] %></p>
-      <p class="no-margin-bottom"><%= document[:seller][:address] %></p>
-      <p class="no-margin-bottom"><%= document[:seller][:city] %> (<%= document[:seller][:state]  %>)</p>
+      <p class="no-margin-bottom"><%= document[:seller][:address].mb_chars.titleize %></p>
+      <p class="no-margin-bottom"><%= document[:seller][:city].mb_chars.titleize %> (<%= document[:seller][:state].mb_chars.upcase  %>)</p>
       <p class="no-margin-bottom"><%= document[:seller][:zip_code] %></p>
       <p><%= document[:seller][:email] %></p>
       <br>
     </div>
-  </div>
     <% document[:signers].each do |signer| %>
       <% if signer[:sign_as].include? "joint_debtor" %>
         <div class="signature">
           <strong><p>Devedor Solidário</p></strong>
           <br>
-          <p class="no-margin-bottom signature-line"><%= signer[:name] %></p>
+          <p class="no-margin-bottom signature-line"><%= signer[:name].mb_chars.titleize %></p>
           <p class="no-margin-bottom"><%= signer[:documentation] %></p>
           <p class="no-margin-bottom"><%= signer[:email] %></p>
+          <br>
         </div>
       <% end %>
     <% end %>
+    <div class="signature">
+      <strong><p>Testemunha</p></strong>
+      <br>
+      <p class="no-margin-bottom signature-line">Nome:</p>
+      <p class="no-margin-bottom">RG:</p>
+      <p class="no-margin-bottom">CPF/MF:</p>
+      <br>
+    </div>
+    <div class="signature">
+      <strong><p>Testemunha</p></strong>
+      <br>
+      <p class="no-margin-bottom signature-line">Nome:</p>
+      <p class="no-margin-bottom">RG:</p>
+      <p class="no-margin-bottom">CPF/MF:</p>
+      <br>
+    </div>
+  </div>
 </div>
 
