@@ -20,12 +20,13 @@
 
   <h3>1. Cálculo da Operação</h3>
   <p class="no-margin-bottom">(+) Total Bruto dos Créditos: <%= document[:operation][:gross_value] %></p>
-  <p class="no-margin-bottom">(-) Fator: <%= document[:operation][:fator] %></p>
-  <p class="no-margin-bottom">(-) Ad valorem: <%= document[:operation][:advalorem] %></p>
-  <p class="no-margin-bottom">(-) IOF: <%= document[:operation][:iof] %></p>
-  <p class="no-margin-bottom">(-) IOF Adicional: <%= document[:operation][:iof_adicional] %></p>
-  <p class="no-margin-bottom">(-) Tarifas: <%= document[:operation][:fee] %></p>
+  <p class="no-margin-bottom">(-) Taxa: <%= document[:operation][:fee] %></p>
   <p>(=) Valor líquido: <%= document[:operation][:net_value] %></p>
+  <p class="no-margin-bottom">O depósito do valor líquido será dividido em dois momentos:</p>
+  <ul>
+    <li>uma primeira parte no momento da operação: <%= document[:operation][:first_deposit] %></li>
+    <li>o restante no momento da liquidação: <%= document[:operation][:protection] %></li>
+  </ul>
 
   <h3>2. Relação dos Créditos negociados</h3>
   <table>
@@ -33,15 +34,15 @@
       <tr>
         <th>Sacado</th>
         <th>CPF/CNPJ</th>
-        <th>Tipo</th>
-        <th>Nº NF-e</th>
+        <th class="text-center">Tipo</th>
         <th>Nº Doc</th>
-        <th>Vencto</th>
-        <th>Dias</th>
-        <th>Valor</th>
-        <th>Fator+Ad</th>
-        <th>IOF</th>
-        <th>Líquido</th>
+        <th class="text-center">Vencto</th>
+        <th class="text-center">Dias</th>
+        <th class="text-right">Valor</th>
+        <th class="text-right">Taxa</th>
+        <th class="text-right">Líquido</th>
+        <th class="text-right">Depósito no momento da operação</th>
+        <th class="text-right">Depósito no momento da liquidação</th>
       </tr>
     </thead>
     <tbody>
@@ -49,15 +50,15 @@
         <tr>
           <td><%= installment[:payer_company_name].mb_chars.titleize %></td>
           <td><%= installment[:registration] %></td>
-          <td><%= installment[:type].mb_chars.upcase %></td>
-          <td><%= installment[:invoice_number] %></td>
+          <td class="text-center"><%= installment[:type].mb_chars.upcase %></td>
           <td><%= installment[:number] %></td>
-          <td><%= installment[:due_date] %></td>
-          <td><%= installment[:outstanding_days] %></td>
-          <td><%= installment[:value] %></td>
-          <td><%= installment[:fator_advalorem] %></td>
-          <td><%= installment[:iof] %></td>
-          <td><%= installment[:net_value] %></td>
+          <td class="text-center"><%= installment[:due_date] %></td>
+          <td class="text-center"><%= installment[:outstanding_days] %></td>
+          <td class="text-right"><%= installment[:value] %></td>
+          <td class="text-right"><%= installment[:fee] %></td>
+          <td class="text-right"><%= installment[:net_value] %></td>
+          <td class="text-right"><%= installment[:first_deposit] %></td>
+          <td class="text-right"><%= installment[:protection] %></td>
         </tr>
       <% end %>
     </tbody>
