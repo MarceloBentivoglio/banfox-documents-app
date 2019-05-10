@@ -4,24 +4,31 @@
   class: "btn btn-primary" %>
 
 <div class="container">
-  <h1>ADITIVO AO CONTRATO DE FOMENTO COMERCIAL COM REGRESSO</h1>
-  <h2>Operação <%= @content[:operation][:id] %> realizada em <%= Time.parse(@content[:operation][:time]).strftime("%d/%m/%Y") %></h2>
+  <h1 class="text-center">Termo da Operação</h1>
+  <p class="no-margin-bottom">Número da Operação: <%= @content[:operation][:id] %> </p>
+  <p>Operação realizada em:  <%= Time.parse(@content[:operation][:time]).strftime("%d/%m/%Y") %></p>
 
-  <h3>Contratante</h3>
-  <p class="no-margin-bottom"><%= @content[:seller][:company_name].mb_chars.titleize %></p>
-  <p class="no-margin-bottom"><%= @content[:seller][:cnpj] %></p>
-  <p class="no-margin-bottom"><%= @content[:seller][:address].mb_chars.titleize %></p>
-  <p class="no-margin-bottom"><%= @content[:seller][:city].mb_chars.titleize %> (<%= @content[:seller][:state].mb_chars.upcase  %>)</p>
-  <p class="no-margin-bottom"><%= @content[:seller][:zip_code] %></p>
-  <p><%= @content[:seller][:email] %></p>
+  <div class="contract-parties">
+    <div>
+      <h3>Contratante (você mesmo!)</h3>
+      <p class="no-margin-bottom"><%= @content[:seller][:company_name].mb_chars.titleize %></p>
+      <p class="no-margin-bottom"><%= @content[:seller][:cnpj] %></p>
+      <p class="no-margin-bottom"><%= @content[:seller][:address].mb_chars.titleize %></p>
+      <p class="no-margin-bottom"><%= @content[:seller][:city].mb_chars.titleize %> (<%= @content[:seller][:state].mb_chars.upcase  %>)</p>
+      <p class="no-margin-bottom"><%= @content[:seller][:zip_code] %></p>
+      <p><%= @content[:seller][:email] %></p>
+    </div>
+    <div>
+      <h3>Contratada (Banfox, sua melhor amiga!)</h3>
+      <p class="no-margin-bottom">MVP Invest Fomento Mercantil Ltda.</p>
+      <p class="no-margin-bottom">23.198.636/0001-95</p>
+      <p class="no-margin-bottom">Avenida Angélica, 2529</p>
+      <p class="no-margin-bottom">São Paulo (SP)</p>
+      <p class="no-margin-bottom">01227-200</p>
+      <p>joao@banfox.com.br</p>
+    </div>
+  </div>
 
-  <h3>Contratada</h3>
-  <p class="no-margin-bottom">MVP Invest Fomento Mercantil Ltda.</p>
-  <p class="no-margin-bottom">23.198.636/0001-95</p>
-  <p class="no-margin-bottom">Avenida Angélica, 2529</p>
-  <p class="no-margin-bottom">São Paulo (SP)</p>
-  <p class="no-margin-bottom">01227-200</p>
-  <p>joao@banfox.com.br</p>
 
   <h3>1. Cálculo da Operação</h3>
   <p class="no-margin-bottom">(+) Total Bruto dos Créditos: <%= @content[:operation][:gross_value] %></p>
