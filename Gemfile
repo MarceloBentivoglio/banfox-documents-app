@@ -31,6 +31,9 @@ gem 'rest-client'
 # Used to track erros in production
 gem 'rollbar'
 
+# Used to create pdf from html
+gem 'grover'
+
 # Used to keep the documents generated on Amazon S3
 gem "aws-sdk-s3", require: false
 

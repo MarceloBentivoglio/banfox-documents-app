@@ -2,7 +2,8 @@ class Document < ApplicationRecord
   belongs_to :user
 
   def to_pdf
-    kit = PDFKit.new(as_html)
+    # kit = PDFKit.new(as_html)
+    kit = Grover.new(as_html, format: 'A4')
     kit.to_file("tmp/#{filename}")
   end
 
@@ -11,7 +12,7 @@ class Document < ApplicationRecord
   end
 
   def filename
-    "#{file_date} Aditivo da Operação #{individual_content[:operation][:id]}.pdf"
+    "#{file_date} Termo da Operação #{individual_content[:operation][:id]}.pdf"
   end
 
   def render_attributes
