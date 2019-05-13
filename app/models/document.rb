@@ -3,8 +3,9 @@ class Document < ApplicationRecord
 
   def to_pdf
     # kit = PDFKit.new(as_html)
-    kit = Grover.new(as_html, format: 'A4')
-    kit.to_file("tmp/#{filename}")
+    # kit.to_file("tmp/#{filename}")
+    grover = Grover.new(as_html, format: 'A4')
+    grover = grover.to_pdf
   end
 
   def to_base_64
