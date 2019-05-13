@@ -1,155 +1,150 @@
-<%= link_to "Download PDF",
-  download_document_path(@document, format: "pdf"),
-
-  class: "btn btn-primary" %>
+<%= link_to "Download PDF", download_document_path(@document, format: "pdf"), class: "btn btn-primary" %>
 
 <div class="container">
   <h1 class="text-center">Termo da Operação</h1>
-  <p class="no-margin-bottom">Número da Operação: <%= @content[:operation][:id] %> </p>
-  <p>Operação realizada em:  <%= Time.parse(@content[:operation][:time]).strftime("%d/%m/%Y") %></p>
-
-  <div class="contract-parties">
-    <div>
-      <h3>Contratante (você mesmo!)</h3>
-      <p class="no-margin-bottom"><%= @content[:seller][:company_name].mb_chars.titleize %></p>
-      <p class="no-margin-bottom"><%= @content[:seller][:cnpj] %></p>
-      <p class="no-margin-bottom"><%= @content[:seller][:address].mb_chars.titleize %></p>
-      <p class="no-margin-bottom"><%= @content[:seller][:city].mb_chars.titleize %> (<%= @content[:seller][:state].mb_chars.upcase  %>)</p>
-      <p class="no-margin-bottom"><%= @content[:seller][:zip_code] %></p>
-      <p><%= @content[:seller][:email] %></p>
-    </div>
-    <div>
-      <h3>Contratada (Banfox, sua melhor amiga!)</h3>
-      <p class="no-margin-bottom">MVP Invest Fomento Mercantil Ltda.</p>
-      <p class="no-margin-bottom">23.198.636/0001-95</p>
-      <p class="no-margin-bottom">Avenida Angélica, 2529</p>
-      <p class="no-margin-bottom">São Paulo (SP)</p>
-      <p class="no-margin-bottom">01227-200</p>
-      <p>joao@banfox.com.br</p>
+  <h3 class="text-center">Informações Gerais</h3>
+  <div class="general-info section-wrapper">
+    <p class="no-margin-bottom">Número da Operação: <%= @content[:operation][:id] %> </p>
+    <p>Operação realizada em:  <%= Time.parse(@content[:operation][:time]).strftime("%d/%m/%Y") %></p>
+    <div class="contract-parties">
+      <div class="contract-party">
+        <p class="no-margin-bottom">"<strong>Você</strong>"</p>
+        <p class="no-margin-bottom"><%= @content[:seller][:company_name].mb_chars.titleize %></p>
+        <p class="no-margin-bottom"><%= @content[:seller][:cnpj] %></p>
+        <p class="no-margin-bottom"><%= @content[:seller][:address].mb_chars.titleize %></p>
+        <p class="no-margin-bottom"><%= @content[:seller][:city].mb_chars.titleize %> (<%= @content[:seller][:state].mb_chars.upcase  %>)</p>
+        <p class="no-margin-bottom"><%= @content[:seller][:zip_code] %></p>
+        <p><%= @content[:seller][:email] %></p>
+      </div>
+      <div class="contract-party">
+        <p class="no-margin-bottom">"<strong>Banfox</strong>" (sua melhor amiga!)</p>
+        <p class="no-margin-bottom">MVP Invest Fomento Mercantil Ltda.</p>
+        <p class="no-margin-bottom">23.198.636/0001-95</p>
+        <p class="no-margin-bottom">Avenida Angélica, 2529</p>
+        <p class="no-margin-bottom">São Paulo (SP)</p>
+        <p class="no-margin-bottom">01227-200</p>
+        <p>joao@banfox.com.br</p>
+      </div>
     </div>
   </div>
 
-
-  <h3>1. Cálculo da Operação</h3>
-  <p class="no-margin-bottom">(+) Total Bruto dos Créditos: <%= @content[:operation][:gross_value] %></p>
-  <p class="no-margin-bottom">(-) Taxa: <%= @content[:operation][:fee] %></p>
-  <p>(=) Valor líquido: <%= @content[:operation][:net_value] %></p>
-  <p class="no-margin-bottom">O depósito do valor líquido será dividido em dois momentos:</p>
-  <ul>
-    <li>uma primeira parte no momento da operação: <%= @content[:operation][:first_deposit] %></li>
-    <li>o restante no momento da liquidação: <%= @content[:operation][:protection] %></li>
-  </ul>
-
-  <h3>2. Relação dos Créditos negociados</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Sacado</th>
-        <th>CPF/CNPJ</th>
-        <th class="text-center">Tipo</th>
-        <th>Nº Doc</th>
-        <th class="text-center">Vencto</th>
-        <th class="text-center">Dias</th>
-        <th class="text-right">Valor</th>
-        <th class="text-right">Taxa</th>
-        <th class="text-right">Líquido</th>
-        <th class="text-right">Depósito no momento da operação</th>
-        <th class="text-right">Depósito no momento da liquidação</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @content[:installments].each do |installment| %>
+  <h3 class="text-center">Resumo da Operação</h3>
+  <div class="operation-summary section-wrapper">
+    <div class="summary-header">
+      <div class="calculus">
+        <p class="no-margin-bottom identation-sm">Total Bruto dos Créditos: <%= @content[:operation][:gross_value] %></p>
+        <p class="no-margin-bottom"> <i class="fas fa-minus font-small"></i> </p>
+        <p class="no-margin-bottom identation-sm">Taxa: <%= @content[:operation][:fee] %>  <span class="small-letters">(viu?! não tem nenhuma taxa escondida, é só esta mesmo!)</span></p>
+        <p class="no-margin-bottom result-notation identation-sm">Valor líquido total: <%= @content[:operation][:net_value] %></p>
+        <p class="no-margin-bottom identation-md"> <i class="far fa-calendar-alt font-light-gray font-small"></i> Primeiro depósito total: <%= @content[:operation][:first_deposit] %> </p>
+        <p class="identation-md"> <i class="far fa-calendar-alt font-light-gray font-small"></i> Proteção total: <%= @content[:operation][:protection] %> </p>
+      </div>
+      <div class="calculus-explanation">
+        <p>Os valores referentes à proteção, indicados na tabela abaixo (ali onde está escrito "<strong>Proteção</strong>" mesmo, no finalzinho) serão imediatamente depositados para Você quando o “<strong>Valor Bruto</strong>” for pago à Banfox. Desse jeito, podemos reduzir sua taxa e ajudá-lo com aqueles atrasos inesperados, olha que incrível! Se quiser saber mais detalhes é só olhar o item 4 da parte "Detalhes de como funciona a operação".</p>
+      </div>
+    </div>
+    <table>
+      <thead>
         <tr>
-          <td><%= installment[:payer_company_name].mb_chars.titleize %></td>
-          <td><%= installment[:registration] %></td>
-          <td class="text-center"><%= installment[:type].mb_chars.upcase %></td>
-          <td><%= installment[:number] %></td>
-          <td class="text-center"><%= installment[:due_date] %></td>
-          <td class="text-center"><%= installment[:outstanding_days] %></td>
-          <td class="text-right"><%= installment[:value] %></td>
-          <td class="text-right"><%= installment[:fee] %></td>
-          <td class="text-right"><%= installment[:net_value] %></td>
-          <td class="text-right"><%= installment[:first_deposit] %></td>
-          <td class="text-right"><%= installment[:protection] %></td>
+          <th>Sacado</th>
+          <th>CPF/CNPJ</th>
+          <th>Nº Doc</th>
+          <th class="text-center">Vencimento</th>
+          <th class="text-center">Dias</th>
+          <th class="text-right">Valor</th>
+          <th class="text-right">Taxa</th>
+          <th class="text-right">Líquido</th>
+          <th class="text-right">Depósito no momento da operação</th>
+          <th class="text-right">Depósito no momento da liquidação</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @content[:installments].each do |installment| %>
+          <tr>
+            <td><%= installment[:payer_company_name].mb_chars.titleize %></td>
+            <td><%= installment[:registration] %></td>
+            <td><%= installment[:number] %></td>
+            <td class="text-center"><%= installment[:due_date] %></td>
+            <td class="text-center"><%= installment[:outstanding_days] %></td>
+            <td class="text-right"><%= installment[:value] %></td>
+            <td class="text-right"><%= installment[:fee] %></td>
+            <td class="text-right"><%= installment[:net_value] %></td>
+            <td class="text-right"><%= installment[:first_deposit] %></td>
+            <td class="text-right"><%= installment[:protection] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
   <br>
-
-  <h3>3.</h3>
-  <p>Pelo presente termo aditivo ao Contrato Geral de Fomento Mercantil (“Termo” ou “Aditivo”), a Contratante e a Contratada (que, individualmente, poderão ser referidas como “Parte” e, em conjunto, como “Partes”) celebram a compra e a venda dos créditos aqui discriminados, pela importância neste Termo avençada, da qual concordam e se dizem plenamente satisfeitos e de acordo com a precificação negocial, respondendo a Contratante e o(s) “Devedor(es) Solidário(s)” (conforme página de assinaturas deste Termo) pela liquidação dos referidos créditos.</p>
-  <h3>4.</h3>
-  <p>A Contratante declara, sem qualquer induzimento, ser devedora da MVP - Fomento Mercantil Ltda. (Contratada) da dívida líquida, certa e exigível definida na cláusula primeira deste Termo no campo “Total Bruto dos Créditos”, a qual será paga conforme a(s) data(s) de vencimento do(s) título(s) indicado(s) neste Aditivo, salvo quando o vencimento recair em feriado ou final de semana, quando então se prorrogará para o primeiro dia útil subsequente. Em caso de atraso no pagamento do título superior a 2 (dois) dias úteis (“Inadimplência”), importará no vencimento integral e antecipado de todo o débito do título em questão, além do acréscimo de correção monetária (IGPM/FGV), juros moratórios à taxa de 1,00% (um por cento) ao mês e multa de 10,00% (dez por cento) sobre o total do título.</p>
-  <h3>5.</h3>
-  <p>O(s) Devedor(es) Solidário(s), conforme página de assinaturas deste Termo, assume(m) e garante(m) todas as obrigações assumidas pela Contratante nesta operação e assina(m) o presente Termo renunciando, expressa e irrevogavelmente, ao benefício de ordem estabelecido no Código Civil, reciprocamente constituindo cada qual como seu bastante procurador, através de mandato irrevogável e irretratável, outorgando-se, mútua e reciprocamente, os mais amplos, gerais e ilimitados poderes para qualquer deles, em nome de cada um dos devedores, receberem citação em ações que tenham por objeto o presente contrato.</p>
-  <h3>6.</h3>
-  <p>Fica convencionado entre as partes que na transmissão dos créditos negociados neste aditivo, a Contratante e o(s) Devedor(es) Solidário(s) respondem pela liquidação de referidos créditos e pela solvência dos devedores.</p>
-  <h3>7.</h3>
-  <p>Valores eventualmente retidos, em razão dos riscos envolvidos em cada operação, serão pagos imediatamente após a liquidação do título a que se refere na conta da Contratada. O valor será pago integralmente, sem correção. Em caso de atrasos, inadimplência, recompra, bem como demais situações extraordinárias, a Contratada poderá utilizar o valor retido, a seu exclusivo critério, para pagamento dos valores ligados à atualização dos títulos.</p>
-  <h3>8.</h3>
-  <p>A Contratante declara ter recebido o valor líquido constante neste termo, da qual dá a mais plena, rasa e geral quitação.</p>
-  <h3>9.</h3>
-  <p>A Contratante e as demais Partes aqui envolvidas afirmam e declaram que o presente Aditivo poderá ser assinado por meio eletrônico, sendo consideradas válidas as referidas assinaturas. A Partes também declaram reconhecerem como válidas as assinaturas eletrônicas feitas através da plataforma “ClickSign” (www.clicksign.com.br), nos termos do art. 10 parágrafo 2º da MP 2200-2/2001.</p>
-  <br>
+  <h3 class="text-center">Detalhes de como funciona a operação</h3>
+  <div class="contract-details section-wrapper">
+    <h3>1.</h3>
+    <p>No presente documento <strong>(“Termo de Operação”)</strong> que trata da antecipação dos recebíveis acima indicados <strong>(“Créditos”)</strong>, Você encontrará as principais informações de que precisa. Mas, não se esqueça; o presente Termo de Operação é complementar ao <strong>“Contrato Geral de Fomento Mercantil”</strong> (que foi o primeiro contrato que você assinou conosco, lembra?). O Contrato Geral de Fomento Mercantil e o Termo de Operação contém todas as informações necessárias e, caso você tenha qualquer dúvida, não prossiga! Entre em contato imediatamente que teremos o maior prazer em ajudar. Lembre-se, a Banfox é sua melhor amiga! 💙</p>
+    <h3>2.</h3>
+    <p>Quando falamos <strong>“Operação”</strong>, queremos dizer a compra e a venda dos créditos aqui discriminados, pelos valores indicados neste Termo de Operação, com os quais Você e seus responsáveis solidários, descritos na página de assinaturas (“Responsáveis Solidários”) concordam. Ah, caso Você tenha ficado com dúvidas, os <strong>“Responsáveis Solidários”</strong> são aqueles que também responderão pela liquidação dos Créditos, caso a Banfox não receba o pagamento diretamente de Você ou de seus clientes no prazo combinado. Os Responsáveis Solidários renunciam expressa e irrevogavelmente, ao benefício de ordem estabelecido no Código Civil, reciprocamente constituindo cada qual como seu bastante procurador, através de mandato irrevogável e irretratável, outorgando-se, mútua e reciprocamente, os mais amplos, gerais e ilimitados poderes para qualquer deles, em nome de cada um dos devedores, receberem citação em ações que tenham por objeto a presente Operação.</p>
+    <h3>3.</h3>
+    <p>Lembre-se que Você é devedora da Banfox, da dívida líquida, certa e exigível definida no Resumo da Operação no campo <strong>“Total Bruto dos Créditos”</strong>, a qual será paga conforme a(s) data(s) de vencimento do(s) título(s) indicado(s) neste Termo de Operação, salvo quando o vencimento recair em feriado ou final de semana, quando então se prorrogará para o primeiro dia útil subsequente. Você e os Responsáveis Solidários respondem pela liquidação dos Créditos e pela solvência dos devedores principais.</p>
+    <h3>4.</h3>
+    <p>Em caso de atraso no pagamento do título superior a 3 (três) dias úteis, não se preocupe. A Proteção está aí para ajudar. Ficou com dúvida? Sua melhor amiga explica:</p>
+    <p>A <strong>“Proteção”</strong> é um valor que deixamos reservado e que, quando a Banfox recebe o pagamento do valor do título, devolvemos a Proteção para você, sem correção. E, assim como nossa taxa é simples e transparente para ajudá-lo, este recurso também não fugiria à regra. Além de fornecer mais segurança para a Operação, reduzindo a taxa, caso ocorra algum imprevisto e a data de pagamento do título tenha de ser prorrogada, poderemos utilizar, ao nosso critério, a Proteção para abater o valor da atualização da taxa, em razão da nova data de vencimento. Multa? Juros? Nada disso! Atualizamos o valor da sua taxa exatamente no valor do seu Fator e Ad valorem, considerando o prazo da prorrogação. Incrível, não é mesmo? Ah, lembre-se, poderá ocorrer somente por duas vezes e um prazo máximo (total) de 45 (quarenta e cinco) dias de prorrogação. Após esse prazo o título deverá ser recomprado, ok? Se ficar com dúvida, não hesite em ligar para a Banfox.</p>
+    <h3>5.</h3>
+    <p>Sabemos que, em toda relação de amizade, às vezes, atritos acontecem. Nesse caso, nos preocupamos tanto com Você que já deixamos claro o que acontecerá. Ah, outra coisa, pode esquecer aquelas “letrinhas” pequenas. Amigo fala sempre a verdade, na cara, sem medo. Então, veja o que acontecerá:</p>
+    <p>A falta de pagamento, após 15 (quinze) dias do vencimento de um ou mais Créditos acima elencados <strong>(“Inadimplência”)</strong>, importará no vencimento integral e antecipado de todo o débito do título em questão, além do acréscimo de correção monetária (IGPM/FGV), juros moratórios à taxa de 1,00% (um por cento) ao mês e multa de 10,00% (dez por cento) sobre o total do título. </p>
+    <h3>6.</h3>
+    <p>Você declara ter recebido o valor líquido descrito neste termo, da qual dá a mais plena, rasa e geral quitação.</p>
+    <h3>7.</h3>
+    <p>Você, os Responsáveis Solidários e a Banfox declaram que o presente Termo de Operação poderá ser assinado por meio eletrônico, sendo consideradas válidas as referidas assinaturas (digitais e/ou eletrônicas), nos termos do art. 10 parágrafo 2º da MP 2200-2/2001.</p>
+  </div>
 
   <div class="text-center">
-  <span>São Paulo - São Paulo, <%= Time.parse(@content[:operation][:time]).strftime("%d/%m/%Y") %>.</span>
+  <span>São Paulo, <%= Time.parse(@content[:operation][:time]).strftime("%d/%m/%Y") %>.</span>
   </div>
   <br>
 
-  <h3>Assinaturas</h3>
-  <div class="signatures">
-    <div class="signature">
-      <strong><p>Contratada</p></strong>
-      <br>
-      <p class="no-margin-bottom signature-line">MVP Invest Fomento Mercantil Ltda.</p>
-      <p class="no-margin-bottom">23.198.636/0001-95</p>
-      <p class="no-margin-bottom">Avenida Angélica, 2529</p>
-      <p class="no-margin-bottom">São Paulo (SP)</p>
-      <p class="no-margin-bottom">01227-200</p>
-      <p>joao@banfox.com.br</p>
-      <br>
+  <h3 class="text-center">Assinaturas</h3>
+  <div class="signatures section-wrapper">
+    <div class="main-signatures">
+      <div class="signature">
+        <br>
+        <p class="no-margin-bottom signature-line text-center"><%= @content[:seller][:company_name].mb_chars.titleize %></p>
+        <br>
+      </div>
+      <div class="signature">
+        <br>
+        <p class="no-margin-bottom signature-line text-center">MVP Invest Fomento Mercantil Ltda.</p>
+        <br>
+      </div>
     </div>
-    <div class="signature">
-      <strong><p>Contratante</p></strong>
-      <br>
-      <p class="no-margin-bottom signature-line"><%= @content[:seller][:company_name].mb_chars.titleize %></p>
-      <p class="no-margin-bottom"><%= @content[:seller][:cnpj] %></p>
-      <p class="no-margin-bottom"><%= @content[:seller][:address].mb_chars.titleize %></p>
-      <p class="no-margin-bottom"><%= @content[:seller][:city].mb_chars.titleize %> (<%= @content[:seller][:state].mb_chars.upcase  %>)</p>
-      <p class="no-margin-bottom"><%= @content[:seller][:zip_code] %></p>
-    <p><%= @content[:seller][:email] %></p>
-      <br>
-    </div>
-    <% @content[:signers].each do |signer| %>
-      <% if signer[:sign_as].include? "joint_debtor" %>
-        <div class="signature">
-          <strong><p>Devedor Solidário</p></strong>
-          <br>
-          <p class="no-margin-bottom signature-line"><%= signer[:name].mb_chars.titleize %></p>
-          <p class="no-margin-bottom"><%= signer[:documentation] %></p>
-          <p class="no-margin-bottom"><%= signer[:email] %></p>
-          <br>
-        </div>
+      <% @content[:signers].each do |signer| %>
+        <% if signer[:sign_as].include? "joint_debtor" %>
+          <div class="signature">
+            <strong><p>Devedor Solidário</p></strong>
+            <br>
+            <p class="no-margin-bottom signature-line"><%= signer[:name].mb_chars.titleize %></p>
+            <p class="no-margin-bottom"><%= signer[:documentation] %></p>
+            <p class="no-margin-bottom"><%= signer[:email] %></p>
+            <br>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-    <div class="signature">
-      <strong><p>Testemunha</p></strong>
-      <br>
-      <p class="no-margin-bottom signature-line">Nome:</p>
-      <p class="no-margin-bottom">RG:</p>
-      <p class="no-margin-bottom">CPF/MF:</p>
-      <br>
-    </div>
-    <div class="signature">
-      <strong><p>Testemunha</p></strong>
-      <br>
-      <p class="no-margin-bottom signature-line">Nome:</p>
-      <p class="no-margin-bottom">RG:</p>
-      <p class="no-margin-bottom">CPF/MF:</p>
-      <br>
-    </div>
+      <div class="signature">
+        <strong><p>Testemunha</p></strong>
+        <br>
+        <p class="no-margin-bottom signature-line">Nome:</p>
+        <p class="no-margin-bottom">RG:</p>
+        <p class="no-margin-bottom">CPF/MF:</p>
+        <br>
+      </div>
+      <div class="signature">
+        <strong><p>Testemunha</p></strong>
+        <br>
+        <p class="no-margin-bottom signature-line">Nome:</p>
+        <p class="no-margin-bottom">RG:</p>
+        <p class="no-margin-bottom">CPF/MF:</p>
+        <br>
+      </div>
   </div>
+
 </div>
 

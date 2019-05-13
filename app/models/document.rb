@@ -2,8 +2,6 @@ class Document < ApplicationRecord
   belongs_to :user
 
   def to_pdf
-    # kit = PDFKit.new(as_html)
-    # kit.to_file("tmp/#{filename}")
     grover = Grover.new(as_html, format: 'A4')
     grover = grover.to_pdf
   end

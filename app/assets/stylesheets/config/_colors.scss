@@ -1,11 +1,46 @@
 // Define variables for your color scheme
 
-// For example:
-$red: #FD1015;
-$blue: #167FFB;
-$yellow: #FFC65A;
-$orange: #E67E22;
-$green: #1EDD88;
-$gray: #0E0000;
-$light-gray: #F4F4F4;
-$white:#FFFFFF
+// Base Colors
+$red: #D64141;
+$orange: #FA9F47;
+$green: #74C080;
+$lightest-gray: #d1dbe7;
+$light-gray: #c3c5c8;
+$gray: #7c92a7;
+$dark-gray: #47576b;
+$white: #fff;
+$background-dark-blue: #02393E;
+$white-paper: #fff;
+
+/* Blues */
+// branding blue
+$blue: #6686FF;
+// complementary blues
+$light-blue: #8ebdf1;
+$medium-blue: #46547C;
+$dark-blue: #162D3F;
+$background-blue: #EEF1F6;
+
+// Helpers Colors
+$dark-orange: #FB5825;
+$other-blue: rgb(102, 134, 255);
+$light-green: #abd7b4;
+$neon-green: #54FF24;
+$neon-green-light: #9BFF27;
+$neon-purple: #9B51E0;
+$neon-dark-purple: #9140DD;
+$neon-blue: #50D4ff;
+$neon-light-blue: #00FCFC;
+
+$dark-green-progressbar: rgb(39, 219, 204);
+$light-green-progressbar: rgb(61, 233, 220);
+$yellow: #fa9f47;
+$light-yellow: #fbc595;
+$purple: #79589F;
+$black: #000;
+
+// Shades
+$near-black: #4e535a;
+$near-white: #fbfbfd;
+$background: #f7f9fc;
+

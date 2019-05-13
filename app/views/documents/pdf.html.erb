@@ -25,7 +25,7 @@
   </div>
 
 
-  <h3>1. Cálculo da Operação</h3>
+  <h3>Cálculo da Operação</h3>
   <p class="no-margin-bottom">(+) Total Bruto dos Créditos: <%= document[:operation][:gross_value] %></p>
   <p class="no-margin-bottom">(-) Taxa: <%= document[:operation][:fee] %></p>
   <p>(=) Valor líquido: <%= document[:operation][:net_value] %></p>
@@ -35,7 +35,7 @@
     <li>o restante no momento da liquidação: <%= document[:operation][:protection] %></li>
   </ul>
 
-  <h3>2. Relação dos Créditos negociados</h3>
+  <h3>Relação dos Créditos negociados</h3>
   <table>
     <thead>
       <tr>
@@ -72,19 +72,19 @@
   </table>
   <br>
 
-  <h3>3.</h3>
-  <p>Pelo presente termo aditivo ao Contrato Geral de Fomento Mercantil (“Termo” ou “Aditivo”), a Contratante e a Contratada (que, individualmente, poderão ser referidas como “Parte” e, em conjunto, como “Partes”) celebram a compra e a venda dos créditos aqui discriminados, pela importância neste Termo avençada, da qual concordam e se dizem plenamente satisfeitos e de acordo com a precificação negocial, respondendo a Contratante e o(s) “Devedor(es) Solidário(s)” (conforme página de assinaturas deste Termo) pela liquidação dos referidos créditos.</p>
-  <h3>4.</h3>
+  <h3>1.</h3>
+  <p>No presente documento <strong>(“Termo de Operação”)</strong> que trata da antecipação dos recebíveis acima indicados <strong>(“Créditos”)</strong>, Você encontrará as principais informações de que precisa. Mas, não se esqueça; o presente Termo de Operação é complementar ao <strong>“Contrato Geral de Fomento Mercantil”</strong> (que foi o primeiro contrato que você assinou conosco, lembra?). O Contrato Geral de Fomento Mercantil e o Termo de Operação contém todas as informações necessárias e, caso você tenha qualquer dúvida, não prossiga! Entre em contato imediatamente que teremos o maior prazer em ajudar. Lembre-se, a Banfox é sua melhor amiga! 💙</p>
+  <h3>2.</h3>
   <p>A Contratante declara, sem qualquer induzimento, ser devedora da MVP - Fomento Mercantil Ltda. (Contratada) da dívida líquida, certa e exigível definida na cláusula primeira deste Termo no campo “Total Bruto dos Créditos”, a qual será paga conforme a(s) data(s) de vencimento do(s) título(s) indicado(s) neste Aditivo, salvo quando o vencimento recair em feriado ou final de semana, quando então se prorrogará para o primeiro dia útil subsequente. Em caso de atraso no pagamento do título superior a 2 (dois) dias úteis (“Inadimplência”), importará no vencimento integral e antecipado de todo o débito do título em questão, além do acréscimo de correção monetária (IGPM/FGV), juros moratórios à taxa de 1,00% (um por cento) ao mês e multa de 10,00% (dez por cento) sobre o total do título.</p>
-  <h3>5.</h3>
+  <h3>3.</h3>
   <p>O(s) Devedor(es) Solidário(s), conforme página de assinaturas deste Termo, assume(m) e garante(m) todas as obrigações assumidas pela Contratante nesta operação e assina(m) o presente Termo renunciando, expressa e irrevogavelmente, ao benefício de ordem estabelecido no Código Civil, reciprocamente constituindo cada qual como seu bastante procurador, através de mandato irrevogável e irretratável, outorgando-se, mútua e reciprocamente, os mais amplos, gerais e ilimitados poderes para qualquer deles, em nome de cada um dos devedores, receberem citação em ações que tenham por objeto o presente contrato.</p>
-  <h3>6.</h3>
+  <h3>4.</h3>
   <p>Fica convencionado entre as partes que na transmissão dos créditos negociados neste aditivo, a Contratante e o(s) Devedor(es) Solidário(s) respondem pela liquidação de referidos créditos e pela solvência dos devedores.</p>
-  <h3>7.</h3>
+  <h3>5.</h3>
   <p>Valores eventualmente retidos, em razão dos riscos envolvidos em cada operação, serão pagos imediatamente após a liquidação do título a que se refere na conta da Contratada. O valor será pago integralmente, sem correção. Em caso de atrasos, inadimplência, recompra, bem como demais situações extraordinárias, a Contratada poderá utilizar o valor retido, a seu exclusivo critério, para pagamento dos valores ligados à atualização dos títulos.</p>
-  <h3>8.</h3>
+  <h3>6.</h3>
   <p>A Contratante declara ter recebido o valor líquido constante neste termo, da qual dá a mais plena, rasa e geral quitação.</p>
-  <h3>9.</h3>
+  <h3>7.</h3>
   <p>A Contratante e as demais Partes aqui envolvidas afirmam e declaram que o presente Aditivo poderá ser assinado por meio eletrônico, sendo consideradas válidas as referidas assinaturas. A Partes também declaram reconhecerem como válidas as assinaturas eletrônicas feitas através da plataforma “ClickSign” (www.clicksign.com.br), nos termos do art. 10 parágrafo 2º da MP 2200-2/2001.</p>
   <br>
 
@@ -114,7 +114,7 @@
       <p class="no-margin-bottom"><%= document[:seller][:address].mb_chars.titleize %></p>
       <p class="no-margin-bottom"><%= document[:seller][:city].mb_chars.titleize %> (<%= document[:seller][:state].mb_chars.upcase  %>)</p>
       <p class="no-margin-bottom"><%= document[:seller][:zip_code] %></p>
-      <p><%= document[:seller][:email] %></p>
+    <p><%= document[:seller][:email] %></p>
       <br>
     </div>
     <% document[:signers].each do |signer| %>
