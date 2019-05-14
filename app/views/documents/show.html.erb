@@ -1,6 +1,9 @@
 <%= link_to "Download PDF", download_document_path(@document, format: "pdf"), class: "btn btn-primary" %>
 
 <div class="container">
+  <div class="logo">
+    <%= image_tag "https://res.cloudinary.com/banfox/image/upload/v1557851460/logo/logo-w-name.png"  %>
+  </div>
   <h1 class="text-center">Termo da Operação</h1>
   <h3 class="text-center">Informações Gerais</h3>
   <div class="general-info section-wrapper">
@@ -48,14 +51,14 @@
         <tr>
           <th>Sacado</th>
           <th>CPF/CNPJ</th>
-          <th>Nº Doc</th>
+          <th>Nº do título</th>
           <th class="text-center">Vencimento</th>
-          <th class="text-center">Dias</th>
-          <th class="text-right">Valor</th>
+          <th class="text-center">Prazo</th>
+          <th class="text-right">Valor bruto</th>
           <th class="text-right">Taxa</th>
           <th class="text-right">Líquido</th>
-          <th class="text-right">Depósito no momento da operação</th>
-          <th class="text-right">Depósito no momento da liquidação</th>
+          <th class="text-right">Primeiro depósito</th>
+          <th class="text-right">Proteção</th>
         </tr>
       </thead>
       <tbody>
