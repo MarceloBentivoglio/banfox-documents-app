@@ -7,7 +7,7 @@ class Document < ApplicationRecord
   end
 
   def to_base_64
-    Base64.strict_encode64(to_pdf.read)
+    Base64.strict_encode64(to_pdf)
   end
 
   def filename
