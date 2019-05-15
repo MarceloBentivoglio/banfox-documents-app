@@ -8,7 +8,7 @@
   <h3 class="text-center">Informações Gerais</h3>
   <div class="general-info section-wrapper">
     <p class="no-margin-bottom">Número da Operação: <%= @content[:operation][:id] %> </p>
-    <p>Operação realizada em:  <%= Time.parse(@content[:operation][:time]).strftime("%d/%m/%Y") %></p>
+    <p>Operação realizada em:  <%= l(Time.parse(@content[:operation][:time]), format: "%d de %B de %Y") %></p>
     <div class="contract-parties">
       <div class="contract-party">
         <p class="no-margin-bottom">"<strong>Você</strong>"</p>
@@ -101,7 +101,7 @@
   </div>
 
   <div class="text-center">
-  <span>São Paulo, <%= Time.parse(@content[:operation][:time]).strftime("%d/%m/%Y") %>.</span>
+  <span>São Paulo, <%= l(Time.parse(@content[:operation][:time]), format: "%d de %B de %Y") %>.</span>
   </div>
   <br>
 
