@@ -36,14 +36,14 @@
     <div class="summary-header">
       <div class="calculus">
         <p class="no-margin-bottom identation-sm">Total Bruto dos Créditos: <%= @content[:operation][:gross_value] %></p>
-        <p class="no-margin-bottom"> <i class="fas fa-minus font-small"></i> </p>
+        <p class="no-margin-bottom font-sm line-height-sm"> <i class="fas fa-minus"></i> </p>
         <p class="no-margin-bottom identation-sm">Taxa: <%= @content[:operation][:fee] %>  <span class="small-letters">(viu?! não tem nenhuma taxa escondida, é só esta mesmo!)</span></p>
         <p class="no-margin-bottom result-notation identation-sm">Valor líquido total: <%= @content[:operation][:net_value] %></p>
         <p class="no-margin-bottom identation-md"> <i class="far fa-calendar-alt font-light-gray font-small"></i> Primeiro depósito total: <%= @content[:operation][:first_deposit] %> </p>
         <p class="identation-md"> <i class="far fa-calendar-alt font-light-gray font-small"></i> Proteção total: <%= @content[:operation][:protection] %> </p>
       </div>
       <div class="calculus-explanation">
-        <p>Os valores referentes à proteção, indicados na tabela abaixo (ali onde está escrito "<strong>Proteção</strong>" mesmo, no finalzinho) serão imediatamente depositados para Você quando o “<strong>Valor Bruto</strong>” for pago à Banfox. Desse jeito, podemos reduzir sua taxa e ajudá-lo com aqueles atrasos inesperados, olha que incrível! Se quiser saber mais detalhes é só olhar o item 4 da parte "Detalhes de como funciona a operação".</p>
+        <p>Os valores referentes à proteção, indicados na tabela abaixo (ali onde está escrito "Proteção" mesmo, no finalzinho) serão imediatamente depositados para Você quando o “<strong>Valor Bruto</strong>” for pago à Banfox. Desse jeito, podemos reduzir sua taxa e ajudá-lo com aqueles atrasos inesperados, olha que incrível! Se quiser saber mais detalhes é só olhar o item 4 da parte "Detalhes de como funciona a operação".</p>
       </div>
     </div>
     <table>
@@ -107,47 +107,51 @@
 
   <h3 class="text-center">Assinaturas</h3>
   <div class="signatures section-wrapper">
-    <div class="main-signatures">
-      <div class="signature">
-        <br>
-        <p class="no-margin-bottom signature-line text-center"><%= @content[:seller][:company_name].mb_chars.titleize %></p>
-        <br>
-      </div>
-      <div class="signature">
-        <br>
-        <p class="no-margin-bottom signature-line text-center">MVP Invest Fomento Mercantil Ltda.</p>
-        <br>
+    <h5><p>Partes</p></h5>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <p class="no-margin-bottom signature-line text-center"><%= @content[:seller][:company_name].mb_chars.titleize %></p>
+          <br>
+        </div>
+        <div class="col-6">
+          <p class="no-margin-bottom signature-line text-center">MVP Invest Fomento Mercantil Ltda.</p>
+          <br>
+        </div>
       </div>
     </div>
+    <h5><p>Responsáveis Solidários</p></h5>
+    <div class="container">
+    <div class="row">
       <% @content[:signers].each do |signer| %>
         <% if signer[:sign_as].include? "joint_debtor" %>
-          <div class="signature">
-            <strong><p>Devedor Solidário</p></strong>
-            <br>
-            <p class="no-margin-bottom signature-line"><%= signer[:name].mb_chars.titleize %></p>
-            <p class="no-margin-bottom"><%= signer[:documentation] %></p>
-            <p class="no-margin-bottom"><%= signer[:email] %></p>
+          <div class="col-6">
+            <p class="no-margin-bottom signature-line text-center"><%= signer[:name].mb_chars.titleize %></p>
+            <p class="no-margin-bottom text-center"><%= signer[:documentation] %></p>
+            <p class="no-margin-bottom text-center"><%= signer[:email] %></p>
             <br>
           </div>
         <% end %>
       <% end %>
-      <div class="signature">
-        <strong><p>Testemunha</p></strong>
-        <br>
-        <p class="no-margin-bottom signature-line">Nome:</p>
-        <p class="no-margin-bottom">RG:</p>
-        <p class="no-margin-bottom">CPF/MF:</p>
-        <br>
+    </div>
+    </div>
+    <h5><p>Testemunhas</p></h5>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <p class="no-margin-bottom signature-line">Nome:</p>
+          <p class="no-margin-bottom">RG:</p>
+          <p class="no-margin-bottom">CPF/MF:</p>
+          <br>
+        </div>
+        <div class="col-6">
+          <p class="no-margin-bottom signature-line">Nome:</p>
+          <p class="no-margin-bottom">RG:</p>
+          <p class="no-margin-bottom">CPF/MF:</p>
+          <br>
+        </div>
       </div>
-      <div class="signature">
-        <strong><p>Testemunha</p></strong>
-        <br>
-        <p class="no-margin-bottom signature-line">Nome:</p>
-        <p class="no-margin-bottom">RG:</p>
-        <p class="no-margin-bottom">CPF/MF:</p>
-        <br>
-      </div>
+    </div>
   </div>
-
 </div>
 

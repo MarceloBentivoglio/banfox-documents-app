@@ -19,8 +19,12 @@
   font-style: italic;
 }
 
-.font-small {
+.font-sm {
   font-size: 0.8rem;
+}
+
+.line-height-sm {
+  line-height: 0px;
 }
 
 .result-notation {
@@ -80,11 +84,7 @@ th, td {
 
 .signature-line {
   border-top: 1px solid black;
-  width: 500px;
   font-weight: bold;
+  margin-top: 2rem;
 }
 
-.main-signatures {
-  display: flex;
-  justify-content: space-between;
-}
