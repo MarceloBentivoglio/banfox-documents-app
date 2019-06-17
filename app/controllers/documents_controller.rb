@@ -18,7 +18,9 @@ class DocumentsController < ApplicationController
   private
 
   def send_document_pdf
-    send_file @document.to_pdf, download_attributes
+    # send_file @document.to_pdf, download_attributes
+    # send_data @document.to_pdf, type: Mime::PDF, disposition: 'inline'
+    send_data @document.to_pdf, :filename => @document.filename
   end
 
   def download_attributes

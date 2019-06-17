@@ -10,7 +10,7 @@ gem 'rails', '5.2.2'
 gem 'redis'
 
 gem 'autoprefixer-rails'
-gem 'font-awesome-sass', '~> 5.6.1'
+gem 'font-awesome-sass', '~> 5.8.1'
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
@@ -30,6 +30,9 @@ gem 'rest-client'
 
 # Used to track erros in production
 gem 'rollbar'
+
+# Used to create pdf from html
+gem 'grover'
 
 # Used to keep the documents generated on Amazon S3
 gem "aws-sdk-s3", require: false

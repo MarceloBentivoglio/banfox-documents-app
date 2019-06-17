@@ -1,11 +1,72 @@
+.logo {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.section-wrapper {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
 .contract-parties {
+  display: flex;
+  justify-content: space-around;
+  text-align:center;
+}
+
+.small-letters {
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.font-sm {
+  font-size: 0.8rem;
+}
+
+.line-height-sm {
+  line-height: 0px;
+}
+
+.result-notation {
+   border-top: 1.5px solid black;
+   width: 500px;
+}
+
+.identation-sm {
+  padding-left: 5px;
+}
+
+.identation-md {
+  padding-left: 10px;
+}
+
+.font-green {
+  color: $green;
+}
+
+.font-blue {
+  color: $blue;
+}
+
+.font-light-gray {
+  color: $light-gray;
+}
+
+.summary-header {
   display: flex;
   justify-content: space-between;
 }
 
+.calculus-explanation {
+  padding-left: 50px;
+  text-align: justify;
+}
+
+
 table {
   border-collapse: collapse;
   width: 100%;
+  font-size: 0.7rem;
 }
 
 table, th, td {
@@ -16,13 +77,15 @@ th, td {
   padding: 5px;
 }
 
-.signature-line {
-  border-top: 1px solid black;
-  width: 500px;
+.contract-details {
+  p {
+    text-align: justify;
+  }
 }
 
+.signature-line {
+  border-top: 1px solid black;
+  font-weight: bold;
+  margin-top: 2rem;
+}
 
-// .signatures {
-//   display: flex;
-//   justify-content: space-between;
-// }
