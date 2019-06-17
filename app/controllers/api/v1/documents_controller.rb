@@ -6,7 +6,9 @@ class Api::V1::DocumentsController < Api::V1::BaseController
     @document.user = current_user
     authorize [:api, :v1, @document]
     if @document.save
+      puts "vai dar pau no click sign"
       @keys = @document.send_to_signing_platform_and_get_keys
+      puts "passei do click sign"
       render :show, status: :created
     else
       render_error
