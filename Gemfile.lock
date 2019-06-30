@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/Studiosity/grover.git
+  revision: 85b325116c5891d9b7e921e3766b452324323fea
+  specs:
+    grover (0.7.3)
+      combine_pdf (~> 1.0)
+      nokogiri (~> 1.0)
+      schmooze (~> 0.2)
+
+GIT
   remote: https://github.com/gregnavis/wkhtmltopdf-heroku
   revision: 67460ad9cff3c871d6247d6d6af35cca847223a9
   specs:
@@ -97,10 +106,6 @@ GEM
       sassc (>= 1.11)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    grover (0.7.3)
-      combine_pdf (~> 1.0)
-      nokogiri (~> 1.0)
-      schmooze (~> 0.2)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.6.0)
@@ -254,7 +259,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass (~> 5.8.1)
-  grover
+  grover!
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
   pdfkit
