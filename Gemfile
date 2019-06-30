@@ -32,7 +32,7 @@ gem 'rest-client'
 gem 'rollbar'
 
 # Used to create pdf from html
-gem 'grover'
+gem 'grover', git: 'https://github.com/Studiosity/grover.git'
 
 # Used to keep the documents generated on Amazon S3
 gem "aws-sdk-s3", require: false
