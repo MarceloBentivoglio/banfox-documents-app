@@ -1,17 +1,17 @@
 GIT
-  remote: https://github.com/Studiosity/grover.git
-  revision: 85b325116c5891d9b7e921e3766b452324323fea
+  remote: https://github.com/gregnavis/wkhtmltopdf-heroku
+  revision: 67460ad9cff3c871d6247d6d6af35cca847223a9
+  specs:
+    wkhtmltopdf-heroku (2.12.5.0.pre.alpha)
+
+GIT
+  remote: https://github.com/sasakibanfox/grover.git
+  revision: 10bd5355898f074853a463dc9b10df21c4e3abd6
   specs:
     grover (0.7.3)
       combine_pdf (~> 1.0)
       nokogiri (~> 1.0)
       schmooze (~> 0.2)
-
-GIT
-  remote: https://github.com/gregnavis/wkhtmltopdf-heroku
-  revision: 67460ad9cff3c871d6247d6d6af35cca847223a9
-  specs:
-    wkhtmltopdf-heroku (2.12.5.0.pre.alpha)
 
 GEM
   remote: https://rubygems.org/
