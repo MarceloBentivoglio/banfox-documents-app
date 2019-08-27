@@ -6,10 +6,10 @@ module D4Sign
 
       file.binmode
       file.write string_io.read
-      url = "http://demo.d4sign.com.br/api/v1/documents/fbc618e4-ed7e-4a87-b7d7-bc59a9477ce6/upload?tokenAPI=live_e29a3eb16705ad1125e740596478c6c5d93644fe72fbad587d00103fc1c067d1&cryptKey=live_crypt_y0hl7arZp0KBSAH1K1AiaUZ4w4uHqsIe"
+      url = "https://secure.d4sign.com.br/api/v1/documents/1d1cc0c2-98a1-4339-819c-c0bb722a3560/upload?tokenAPI=live_effdf56dfcdbfc106f76f92aabba5febfa3bf312fd829b16bd1c6ff8a6282e55&cryptKey=live_crypt_EEf6XfZYARawupkF6GsRGCMlIX7znn5K"
       headers = {
         "Content-Type": "multipart/form-data;",
-        "tokenAPI": "live_e29a3eb16705ad1125e740596478c6c5d93644fe72fbad587d00103fc1c067d1"
+        "tokenAPI": "live_effdf56dfcdbfc106f76f92aabba5febfa3bf312fd829b16bd1c6ff8a6282e55"
       }
       body = {
         "file": file,
