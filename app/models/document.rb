@@ -32,6 +32,11 @@ class Document < ApplicationRecord
     return clicksign_service.keys
   end
 
+  def send_to_d4sign
+    d4sign_response = D4Sign::Service.new(self)
+    return d4sign_response
+  end
+
   def deadline
     Time.parse(individual_content[:operation][:time]).change({hour: 23, min: 59}).iso8601
   end

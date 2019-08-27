@@ -1,5 +1,5 @@
 class Api::V1::DocumentsController < Api::V1::BaseController
-  acts_as_token_authentication_handler_for User
+  #acts_as_token_authentication_handler_for User
   def create
     variable_content = JSON.parse(request.body.read)
     @document = Document.new(variable_content: variable_content)
@@ -21,6 +21,18 @@ class Api::V1::DocumentsController < Api::V1::BaseController
     # render :show, status: :created
     # rescue
     #   render_error
+  end
+
+  def create_pdf
+    variable_content = JSON.parse(request.body.read)
+    @document = Document.new(variable_content: variable_content)
+    @document.user = User.last
+    if @document.save
+      @doc_uuid = @document.send_to_d4sign
+      render :show, status: :created
+    else
+      render_error
+    end
   end
 
   # private
