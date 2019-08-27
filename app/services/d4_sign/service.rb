@@ -12,14 +12,12 @@ module D4Sign
         "tokenAPI": "live_effdf56dfcdbfc106f76f92aabba5febfa3bf312fd829b16bd1c6ff8a6282e55"
       }
       body = {
-        "file": file,
+        "file": File.new(file.path, "rb"),
       }
-      begin
-      response = RestClient.post(url, body, headers)
-      rescue Exception => e
-        byebug
-      end
-      return response
+      RestClient.post(url, body, headers)
+    rescue Exception => e
+      Rollbar.error(e)
+      nil
     end
   end
 end
