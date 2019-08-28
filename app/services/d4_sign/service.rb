@@ -1,8 +1,13 @@
 module D4Sign
   class Service
+
     def initialize(document)
-      file = Tempfile.new([document.filename, ".pdf"])
-      string_io = StringIO.new(document.to_pdf)
+      @document = document
+    end
+
+    def upload_document
+      file = Tempfile.new([@document.filename, ".pdf"])
+      string_io = StringIO.new(@document.to_pdf)
 
       file.binmode
       file.write string_io.read
@@ -14,7 +19,8 @@ module D4Sign
       body = {
         "file": File.new(file.path, "rb"),
       }
-      RestClient.post(url, body, headers)
+      @upload_response = RestClient.post(url, body, headers)
+      JSON.parse(@upload_response)
     rescue Exception => e
       Rollbar.error(e)
       nil

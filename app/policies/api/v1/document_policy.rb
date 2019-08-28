@@ -3,6 +3,10 @@ class Api::V1::DocumentPolicy < ApplicationPolicy
     return true
   end
 
+  def create_pdf?
+    return true
+  end
+
   class Scope < Scope
     def resolve
       scope.all

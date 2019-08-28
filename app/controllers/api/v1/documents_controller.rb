@@ -26,13 +26,16 @@ class Api::V1::DocumentsController < Api::V1::BaseController
   def create_pdf
     variable_content = JSON.parse(request.body.read)
     @document = Document.new(variable_content: variable_content)
+    #TODO Change to current_user when production
     @document.user = User.last
+    authorize [:api, :v1, @document]
     if @document.save
-      @doc_uuid = @document.send_to_d4sign
-      render :show, status: :created
-    else
-      render_error
+      d4sign = D4Sign::Service.new(@document)
+      @d4sign_response = d4sign.upload_document
     end
+  rescue Exception => e
+    Rollbar.error(e)
+    nil
   end
 
   # private
