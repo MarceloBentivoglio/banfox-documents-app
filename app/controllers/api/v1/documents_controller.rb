@@ -1,6 +1,5 @@
 class Api::V1::DocumentsController < Api::V1::BaseController
-  #TODO uncomment this when production
-  #acts_as_token_authentication_handler_for User
+  acts_as_token_authentication_handler_for User
   def create
     variable_content = JSON.parse(request.body.read)
     @document = Document.new(variable_content: variable_content)
@@ -27,8 +26,7 @@ class Api::V1::DocumentsController < Api::V1::BaseController
   def create_pdf
     variable_content = JSON.parse(request.body.read)
     @document = Document.new(variable_content: variable_content)
-    #TODO Change to current_user when production
-    @document.user = User.last
+    @document.user = current_user
     authorize [:api, :v1, @document]
     if @document.save
       d4sign = D4Sign::Service.new(@document)
