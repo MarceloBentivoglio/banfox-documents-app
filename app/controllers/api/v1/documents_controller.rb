@@ -1,4 +1,5 @@
 class Api::V1::DocumentsController < Api::V1::BaseController
+  #TODO uncomment this when production
   #acts_as_token_authentication_handler_for User
   def create
     variable_content = JSON.parse(request.body.read)
