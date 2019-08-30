@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :documents, only: [ :create ]
+      resources :documents, only: [ :create ] do
+        collection do
+          post :create_pdf
+        end
+      end
     end
   end
 
