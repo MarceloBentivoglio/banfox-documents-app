@@ -40,17 +40,21 @@
         </p>
         <p class="no-margin-bottom identation-sm">
           (-)Comissão Banfox: <%= @content[:operation][:fee] %>  
-          <span class="small-letters">(viu?! não tem nenhuma taxa escondida, é só esta mesmo!)</span>
+          <span class="small-letters">(viu?! não tem nenhuma taxa escondida, é só isso mesmo!)</span>
         </p>
         <p class="no-margin-bottom identation-sm">
           (+)Saldo: <%= @content[:operation][:used_balance] %>
         </p>
         <p class="result-notation identation-sm">
-          (=)Valor total de depósito: <%= @content[:operation][:deposit_today] %>
+          (=)Valor Total de Depósito: <%= @content[:operation][:deposit_today] %>
         </p>
       </div>
       <div class="calculus-explanation">
-        <p>Os valores contidos no campo “<strong>Saldo</strong>”, indicados ao lado e na tabela abaixo, significam eventual desconto ou acréscimo que será realizado ao “<strong>Valor total de Depósito</strong>”, em razão de saldo negativo ou positivo de operações anteriores (atrasos no pagamento ou pagamento antecipado).</p>
+        <p>
+          Os valores contidos no campo “<strong>Saldo</strong>”, indicados ao lado e na tabela abaixo, significam
+          eventual desconto ou acréscimo que será considerado no cálculo do “<strong>Valor Total de Depósito</strong>”, em
+          razão de operações anteriores pagas em atrasos ou adiantadas.
+        </p>
       </div>
     </div>
     <table>
@@ -80,7 +84,7 @@
           </tr>
         <% end %>
         <tr>
-          <td>Saldo</td>
+          <td><strong>Saldo</strong></td>
           <td></td>
           <td></td>
           <td></td>
@@ -89,36 +93,94 @@
           <td></td>
           <td class="text-right"><%= @content[:operation][:used_balance] %></td>
         </tr>
+        <tr>
+          <td><strong>Valor Total de Depósito</strong></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="text-right"><strong><%= @content[:operation][:deposit_today] %></strong></td>
+        </tr>
       </tbody>
     </table>
   </div>
   <div class="contract-details section-wrapper">
     <h3>1.</h3>
-    <p>No presente documento <strong>(“Termo de Operação”)</strong> que trata da antecipação dos recebíveis acima indicados <strong>(“Recebíveis”)</strong>, Você encontrará as principais informações de que precisa. Mas, não se esqueça, o presente Termo de Operação é complementar ao <strong>“Contrato Geral de Fomento Mercantil”</strong> (que foi o primeiro contrato que você assinou conosco, lembra?). O Contrato Geral de Fomento Mercantil e o Termo de Operação contém todas as informações necessárias e, caso você tenha qualquer dúvida, não prossiga! Entre em contato imediatamente que teremos o maior prazer em ajudar. Lembre-se, a Banfox é sua melhor amiga! <i class="fas fa-heart font-red"></i></p>
-    <h3>2.</h3>
-    <p>Quando falamos <strong>“Operação”</strong>, queremos dizer a compra e a venda dos Recebíveis aqui discriminados, pelos valores indicados neste Termo de Operação, com os quais Você e seus responsáveis solidários, descritos na página de assinaturas <strong>(“Responsáveis Solidários”)</strong> concordam. Ah, caso Você tenha ficado com dúvidas, os <strong>“Responsáveis Solidários”</strong> são aqueles que também responderão pela liquidação dos Recebíveis, caso a Banfox não receba o pagamento diretamente de Você, ou de seus clientes, no prazo combinado. Os Responsáveis Solidários renunciam expressa e irrevogavelmente, ao benefício de ordem estabelecido no Código Civil, reciprocamente constituindo cada qual como seu bastante procurador, através de mandato irrevogável e irretratável, outorgando-se, mútua e reciprocamente, os mais amplos, gerais e ilimitados poderes para qualquer deles, em nome de cada um dos devedores, receberem citação em ações que tenham por objeto a presente Operação.</p>
-    <h3>3.</h3>
-    <p>Lembre-se que Você é devedora da Banfox, da dívida líquida, certa e exigível definida no Resumo da Operação no campo <strong>“Valor Total das Notas”</strong>, a qual será paga conforme a(s) data(s) de vencimento do(s) Recebível(is) indicado(s) neste Termo de Operação, salvo quando o vencimento recair em feriado ou final de semana, quando então se prorrogará para o primeiro dia útil subsequente. Você e os Responsáveis Solidários respondem pela liquidação dos Recebíveis e pela solvência dos devedores principais.</p>
-    <h3>4.</h3>
-    <p>Em caso de atraso no pagamento dos Recebíveis, Você poderá acompanhar o valor que será acrescido à Comissão Banfox diretamente via <strong>“Plataforma Banfox”</strong> (www.banfox.com.br), no campo <strong>“Saldo Banfox”</strong>, através do link https://www.banfox.com.br/installments/opened. O valor será atualizado conforme sua Comissão, a qual pode ser verificada através dos Termos de Operação e na Plataforma Banfox, no momento do aceite da Operação e no campo <strong>“Títulos”</strong> -> <strong>“Em Andamento”</strong> -> <strong>“Comissão Banfox”</strong>. Ou seja, a Banfox somente atualizará a data de pagamento para a nova data de pagamento estabelecida entre Você e a Banfox. Ficou com dúvida? Sua melhor amiga explica:</p>
     <p>
-      O <strong>“Saldo”</strong> é um valor que acresce ou reduz o Valor de Depósito,
-      em razão de alguma prorrogação ou pagamento antecipado de Operação anterior. 
-      Caso ocorra algum imprevisto e a data de pagamento do Recebível tenha de ser prorrogada ou antecipada, 
-      o Saldo deverá ser quitado ou abatido até a próxima Operação. Atualizamos o valor do Saldo conforme sua 
-      Comissão Banfox, considerando o prazo da prorrogação. Incrível, não é mesmo? Ah, lembre-se, a prorrogação
-      somente poderá ocorrer caso o sacado-pagador da nota fiscal efetivamente tenha solicitado a prorrogação. 
-      Além disso, a prorrogação somente poderá ocorrer por, no máximo, duas vezes e em um prazo máximo (total) 
-      de 30 (trinta) dias de prorrogação. Após esse prazo, o Recebível deverá ser recomprado por Você, ok? Se 
-      ficar com dúvida, não hesite em ligar para a Banfox.
+      No presente documento <strong>(“Termo de Operação”)</strong> que trata da antecipação dos recebíveis
+      acima indicados <strong>(“Recebíveis”)</strong>, Você encontrará as principais informações de que precisa.
+      Mas, não se esqueça, o presente Termo de Operação é complementar ao <strong>“Contrato Geral de Fomento
+      Mercantil”</strong> (que foi o primeiro contrato que você assinou conosco, lembra?). O Contrato Geral de
+      Fomento Mercantil e o Termo de Operação contém todas as informações necessárias e, caso você tenha qualquer
+      dúvida, não prossiga! Entre em contato imediatamente que teremos o maior prazer em ajudar. Lembre-se, a
+      Banfox é sua melhor amiga! <i class="fas fa-heart font-red"></i>
+    </p>
+    <h3>2.</h3>
+    <p>
+      Quando falamos <strong>“Operação”</strong>, queremos dizer a compra e a venda dos Recebíveis aqui discriminados,
+      pelos valores indicados neste Termo de Operação, com os quais Você e seus responsáveis solidários, descritos na
+      página de assinaturas <strong>(“Responsáveis Solidários”)</strong> concordam. Ah, caso Você tenha ficado com
+      dúvidas, os <strong>“Responsáveis Solidários”</strong> são aqueles que também responderão pela liquidação dos
+      Recebíveis, caso a Banfox não receba o pagamento diretamente de Você, ou de seus clientes, no prazo combinado.
+      Os Responsáveis Solidários renunciam, expressa e irrevogavelmente, ao benefício de ordem estabelecido no Código
+      Civil, constituindo, reciprocamente, cada qual como seu bastante procurador, através de mandato irrevogável e
+      irretratável, outorgando-se, mútua e reciprocamente, os mais amplos, gerais e ilimitados poderes para qualquer
+      deles, em nome de cada um dos devedores, receberem citação em ações que tenham por objeto a presente Operação.
+    </p>
+    <h3>3.</h3>
+    <p>
+      Lembre-se que Você é devedora da Banfox, da dívida líquida, certa e exigível definida no Resumo da Operação no
+      campo <strong>“Valor Total das Notas”</strong>, a qual será paga conforme a(s) data(s) de vencimento do(s)
+      Recebível(is) indicado(s) neste Termo de Operação, salvo quando o vencimento recair em feriado ou final de semana,
+      quando então se prorrogará para o primeiro dia útil subsequente. Você e os Responsáveis Solidários respondem pela
+      liquidação dos Recebíveis e pela solvência dos devedores principais.
+    </p>
+    <h3>4.</h3>
+    <p>
+      Em caso de atraso no pagamento dos Recebíveis, Você poderá acompanhar o valor que será acrescido à Comissão Banfox
+      diretamente via <strong>“Plataforma Banfox”</strong> (www.banfox.com.br), no campo <strong>“Diferença”</strong>,
+      através do link https://www.banfox.com.br/installments/opened. O valor será atualizado conforme sua Comissão, a
+      qual pode ser verificada através dos Termos de Operação e na Plataforma Banfox, no momento do aceite da Operação e
+      no campo <strong>“Títulos”</strong> -> <strong>“Em Andamento”</strong> -> <strong>“Comissão Banfox”</strong>. Ou
+      seja, a Banfox somente atualizará a data de pagamento para a nova data de pagamento estabelecida entre Você e a
+      Banfox. Ficou com dúvida? Sua melhor amiga explica:
+    </p>
+    <p>
+      O <strong>“Saldo”</strong> é um valor que acresce ou reduz o Valor Total de Depósito, em razão de alguma prorrogação
+      ou pagamento antecipado de Operação anterior. Caso ocorra algum imprevisto e a data de pagamento do Recebível tenha
+      de ser prorrogada ou antecipada, o Saldo deverá ser quitado ou abatido até a próxima Operação. Atualizamos o valor
+      do Saldo conforme sua Comissão Banfox, considerando o prazo da prorrogação. Incrível, não é mesmo? Ah, lembre-se, a
+      prorrogação somente poderá ocorrer caso o sacado-pagador da nota fiscal efetivamente tenha solicitado a prorrogação.
+      Além disso, a prorrogação somente poderá ocorrer por, no máximo, duas vezes e em um prazo máximo (total) de 30
+      (trinta) dias de prorrogação. Após esse prazo, o Recebível deverá ser recomprado por Você, ok? Se ficar com dúvida,
+      não hesite em ligar para a Banfox.
     </p>
     <h3>5.</h3>
-    <p>Sabemos que, em toda relação de amizade, às vezes, atritos acontecem. Nesse caso, nos preocupamos tanto com Você que já deixamos claro o que acontecerá. Ah, outra coisa, pode esquecer aquelas “letrinhas” pequenas. Amigo fala sempre a verdade, na cara, sem medo. Então, veja o que acontecerá:</p>
-    <p>Caso a prorrogação do Recebível não seja aprovada pela Banfox ou ocorra a falta de pagamento por mais de 15 (quinze) dias a contar do  vencimento de um ou mais Recebíveis acima elencados (<strong>“Inadimplência”</strong>), ocorrerá o vencimento integral e antecipado de todo o débito da nota fiscal em questão, além do acréscimo de correção monetária (IGPM/FGV), juros moratórios à taxa de 1,00% (um por cento) ao mês e multa de 10,00% (dez por cento) sobre o total do valor da(s) nota(s) fiscal(is) em questão.</p>
+    <p>
+      Sabemos que, em toda relação de amizade, às vezes, atritos acontecem. Nesse caso, nos preocupamos tanto com Você que
+      já deixamos claro o que acontecerá. Ah, outra coisa, pode esquecer aquelas “letrinhas” pequenas. Amigo fala sempre a
+      verdade, na cara, sem medo. Então, veja o que acontecerá:
+    </p>
+    <p>
+      Caso a prorrogação do Recebível não seja aprovada pela Banfox ou ocorra a falta de pagamento por mais de 15 (quinze)
+      dias a contar do  vencimento de um ou mais Recebíveis acima elencados (<strong>“Inadimplência”</strong>), ocorrerá o
+      vencimento integral e antecipado de todo o débito da nota fiscal em questão, além do acréscimo de correção monetária
+      (IGPM/FGV), juros moratórios à taxa de 1,00% (um por cento) ao mês e multa de 10,00% (dez por cento) sobre o total
+      do valor da(s) nota(s) fiscal(is) em questão.
+    </p>
     <h3>6.</h3>
-    <p>A Contratante declara ter recebido o valor de depósito constante neste termo, da qual dá a mais plena, rasa e geral quitação.</p>
+    <p>
+      A Contratante declara ter recebido o Valor Total de Depósito constante neste termo, da qual dá a mais plena, rasa e
+      geral quitação.
+    </p>
     <h3>7.</h3>
-    <p>Você, os Responsáveis Solidários e a Banfox declaram que o presente Termo de Operação poderá ser assinado por meio eletrônico, sendo consideradas válidas as referidas assinaturas (digitais e/ou eletrônicas), nos termos do art. 10 parágrafo 2º da MP 2200-2/2001.</p>
+    <p>
+      Você, os Responsáveis Solidários e a Banfox declaram que o presente Termo de Operação poderá ser assinado por meio
+      eletrônico, sendo consideradas válidas as referidas assinaturas (digitais e/ou eletrônicas), nos termos do art. 10
+      parágrafo 2º da MP 2200-2/2001.
+    </p>
   </div>
 
   <div class="text-center">
