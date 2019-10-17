@@ -29,6 +29,7 @@ module Clicksign
     private
 
     def create_document
+      puts "*** host: #{host}"
       url = "#{host}/api/v1/documents#{request_params}"
       body = {
         "document": {
