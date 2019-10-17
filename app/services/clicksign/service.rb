@@ -16,6 +16,9 @@ module Clicksign
       create_document
       create_signers
       add_signers_to_document
+    rescue Exception => e
+      puts e
+      Rollbar.error(e)
     end
 
     def keys
@@ -29,7 +32,6 @@ module Clicksign
     private
 
     def create_document
-      puts "*** host: #{host}"
       url = "#{host}/api/v1/documents#{request_params}"
       body = {
         "document": {
